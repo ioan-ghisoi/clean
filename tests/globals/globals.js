@@ -14,7 +14,10 @@ export default {
       },
     },
     backend: {
-
+      admin_username: '#username',
+      admin_password: '#login',
+      admin_sign_in: '.action-login',
+      other_payments: '#payment_us_other_payment_methods-head',
     },
   },
   value: {
