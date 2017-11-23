@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Install MYSQL
           command: |
-            mysql -uroot -e 'SET @@global.sql_mode = NO_ENGINE_SUBSTITUTION; CREATE DATABASE magento_2_travis;';
+            mysql 'CREATE DATABASE magento_2_travis;';
       - run:
           name: Display PHP information
           command: |
