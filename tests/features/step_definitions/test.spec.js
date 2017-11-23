@@ -13,9 +13,9 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('https://google.com');
+    browser.url('https://localhost');
     browser.waitUntil(function () {
-      return browser.isVisible('body');
+      return browser.isVisible('bodyd');
     }, VAL.timeout_out, 'body should be visible');
   });
   this.Given(/^I disable the url secret key encryption$/, () => {
