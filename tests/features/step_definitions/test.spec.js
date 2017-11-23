@@ -50,4 +50,10 @@ export default function () {
     browser.selectByValue(BACKEND.security_key_option, '0');
     browser.click(BACKEND.plugin.save);
   });
+  this.Given(/^I set the viewport$/, () => {
+    browser.setViewportSize({
+      width: VAL.resolution_w,
+      height: VAL.resolution_h,
+    }, true);
+  });
 }
