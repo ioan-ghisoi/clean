@@ -32,8 +32,9 @@ jobs:
       - run:
           name: Install MYSQL
           command: |
-            echo '' > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
             apt-get update -qq   
+            apt-get install curl
+            curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
             apt-get remove -y -qq --purge mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5 mysql-client-core-5.5
             apt-get -y -qq autoremove;
             apt-get -y -qq autoclean;
