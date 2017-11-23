@@ -4,10 +4,6 @@ jobs:
     machine:
     hosts:
       local.example.com: 127.0.0.1
-    general:
-        artifacts:
-           - "/home/circleci/project/reports/screenshots"
-           - "/var/log/apache2/"
     docker:
       - image: circleci/node:7.10.1-browsers
       - image: circleci/php:5.6
@@ -41,3 +37,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
       - run: yarn test
+      - store_artifacts:
+          path: /home/circleci/project/reports/screenshots
+          path: /var/log/apache2/
+      - run: mysql -v
