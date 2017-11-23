@@ -12,8 +12,8 @@ jobs:
       - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
       - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - sudo dpkg -i google-chrome*.deb
-      - npm install -g npm
-      - npm install
+      - npm install -g yarn
+      - yarn install
     steps:
       - checkout
       - restore_cache:
@@ -25,4 +25,4 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run test
+      - run: yarn test
