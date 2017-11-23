@@ -5,10 +5,8 @@ jobs:
       - image: circleci/node:7.10
       - image: selenium/hub
         name: hub
-      - image: selenium/node-firefox
-        environment:
-          HUB_PORT_4444_TCP_ADDR: hub
-          HUB_PORT_4444_TCP_PORT: 4444
+      - image: fballiano/magento2-apache-php
+
     working_directory: ~/repo
     steps:
       - checkout
@@ -21,9 +19,6 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
-      
-      # Install Xvfb
-      - run: apt-get install -y xvfb
 
       - save_cache:
           paths:
