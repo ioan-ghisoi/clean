@@ -38,6 +38,7 @@ jobs:
       - run:
           name: Install MYSQL
           command: |
+            locate mysql
             yes Y | apt-get install mysql-server
             yes Y | apt-get install mysql-client
             mysql --version
