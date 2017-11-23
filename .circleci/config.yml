@@ -5,6 +5,7 @@ jobs:
       - image: circleci/node:7.10
       - image: selenium/hub
         name: hub
+      - image: webdevops/php-apache-dev
       - image: alexcheng/magento2
 
     working_directory: ~/repo
