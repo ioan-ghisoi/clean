@@ -1,4 +1,3 @@
-version: 1
 machine:
   node:
     version: 6
@@ -30,7 +29,7 @@ test:
     # - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
 
   post:
-  - npm run start
+  - npm run chimp-ci
   #- cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage
     #- chimp chimp.js --browser="Safari" --platform="iOS" --platformVersion="9.3" --deviceName="iPhone 6 Simulator"
     # - chimp chimp.js --browser="android" --platform="linux" --deviceType="phone"
