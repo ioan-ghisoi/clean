@@ -12,6 +12,12 @@ export default function () {
       height: VAL.resolution_h,
     }, true);
   });
+  this.Given(/^I check google$/, () => {
+    browser.url('https://google.com');
+    browser.waitUntil(function () {
+      return browser.isVisible('body');
+    }, VAL.timeout_out, 'body should be visible');
+  });
   this.Given(/^I disable the url secret key encryption$/, () => {
     browser.url(URL.magento_base + URL.admin_path);
     if (browser.isVisible(BACKEND.admin_username)) {
