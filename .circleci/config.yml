@@ -3,7 +3,7 @@ jobs:
   build:
     general:
         artifacts:
-           - "../reports/screenshots"
+           - "/home/circleci/project/reports/screenshots"
     docker:
       - image: circleci/node:7.10.1-browsers
       - image: circleci/php:5.6
@@ -34,5 +34,5 @@ jobs:
       - run: pwd
       - run: yarn test
       - store_artifacts:
-          path: ../reports/screenshots
+          path: /home/circleci/project/reports/screenshots
       - run: mysql -v
