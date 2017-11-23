@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('https://localhost');
+    browser.url('https://local.example.com');
     browser.waitUntil(function () {
       return browser.isVisible('bodyd');
     }, VAL.timeout_out, 'body should be visible');
