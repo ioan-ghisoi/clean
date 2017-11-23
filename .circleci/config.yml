@@ -2,6 +2,7 @@ version: 2
 jobs:
   build:
     environment:
+      BASH_ENV: "~/.bashrc"
       PULSESTORM_MAGE2_FAKE_URL: "http://magento-2-travis.dev"
       PULSESTORM_MAGE2_ADMIN_EMAIL: "johnny.shrewd@example.com"
       PULSESTORM_MAGE2_ADMIN_FIRST_NAME: "Johnny"    
