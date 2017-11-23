@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:6
       - image: selenium/hub
         name: hub
       - image: selenium/node-firefox
@@ -28,9 +28,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          command: npm install -g chimp
-      - run:
-          command: chimp --ddp=http://localhost:3000 --browser=chrome --jsonOutput=$CIRCLE_TEST_REPORTS/chrome.cucumber --screenshotsPath=$CIRCLE_ARTIFACTS/chrome --saveScreenshots
+          command: ./node_modules/.bin/chimp
         
 
       # - store_artifacts:
