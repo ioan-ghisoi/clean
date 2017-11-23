@@ -1,8 +1,16 @@
 version: 2
+  mysql:
+    image: mysql:5.5
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+    ports:
+      - 3306:3306
 jobs:
   build:
     environment:
-      BASH_ENV: "~/.bin/bash"
       PULSESTORM_MAGE2_FAKE_URL: "http://magento-2-travis.dev"
       PULSESTORM_MAGE2_ADMIN_EMAIL: "johnny.shrewd@example.com"
       PULSESTORM_MAGE2_ADMIN_FIRST_NAME: "Johnny"    
@@ -38,16 +46,8 @@ jobs:
       - run:
           name: Install MYSQL
           command: |
-            docker run
-            --detach
-            --name mysql
-            --publish 3306:3306
-            --env MYSQL_ALLOW_EMPTY_PASSWORD='yes'
-            --env MYSQL_DATABASE=circle_test
-            --env MYSQL_USER=ubuntu
-            --env MYSQL_PASSWORD=p455w0rd
-            mysql:5.7.11
-      ; sleep 10
+            mysql --version
+            mysql 'CREATE DATABASE magento_2_travis;';
       - run:
           name: Display PHP information
           command: |
