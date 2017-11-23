@@ -38,6 +38,7 @@ jobs:
       - run:
           name: Install MYSQL
           command: |
+            apt-get install mysql-server
             mysql --version
             mysql 'CREATE DATABASE magento_2_travis;';
       - run:
