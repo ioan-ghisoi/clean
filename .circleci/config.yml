@@ -1,5 +1,7 @@
 version: 2
-  mysql:
+jobs:
+  build:
+      mysql:
     image: mysql:5.5
     environment:
       - MYSQL_ROOT_PASSWORD=test
@@ -8,8 +10,6 @@ version: 2
       - MYSQL_PASSWORD=test
     ports:
       - 3306:3306
-jobs:
-  build:
     environment:
       PULSESTORM_MAGE2_FAKE_URL: "http://magento-2-travis.dev"
       PULSESTORM_MAGE2_ADMIN_EMAIL: "johnny.shrewd@example.com"
