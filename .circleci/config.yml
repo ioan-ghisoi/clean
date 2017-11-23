@@ -6,6 +6,7 @@ jobs:
            - "./reports/screenshots"
     docker:
       - image: circleci/node:7.10.1-browsers
+      - image: 5.6-apache-browsers
     dependencies:
       cache_directories:
         - "node_modules"
@@ -30,3 +31,4 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
+      - run: mysql -v
