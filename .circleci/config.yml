@@ -27,3 +27,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
+
+      general:
+        artifacts:
+           - "./reports/screenshots"
