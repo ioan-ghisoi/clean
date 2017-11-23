@@ -28,13 +28,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          command: npm run start
-          background: true
+          command: ./node_modules/.bin/chimp
         
-      # run tests!
-      - run: ./node_modules/.bin/chimp
 
       # - store_artifacts:
       #     path: ./errorShots/
       #     when: always
-      
