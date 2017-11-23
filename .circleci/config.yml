@@ -1,11 +1,6 @@
 version: 2
 jobs:
-  build:
-          pre:
-        - cp ./httpd.conf.circle /etc/apache2/sites-available/default
-        - sudo a2enmod rewrite
-        - sudo service apache2 restart
-        
+  build:        
     machine:
     hosts:
       local.example.com: 127.0.0.1
@@ -37,6 +32,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
+      - run: cp ./httpd.conf.circle /etc/apache2/sites-available/default
+      - run: sudo a2enmod rewrite
+      - run: sudo service apache2 restart
       - run: yarn test
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
