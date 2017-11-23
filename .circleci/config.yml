@@ -20,6 +20,9 @@ jobs:
       - sudo dpkg -i google-chrome*.deb
       - npm install -g yarn
       - yarn install
+      - cp /home/circleci/project/httpd.conf.circle /etc/apache2/apache2.conf
+      - sudo a2enmod rewrite
+      - sudo service apache2 restart
     steps:
       - checkout
       - restore_cache:
@@ -32,9 +35,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
-      - run: cp /home/circleci/project/httpd.conf.circle /etc/apache2/sites-available/000-default.conf
-      - run: sudo a2enmod rewrite
-      - run: sudo service apache2 restart
       - run: yarn test
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
