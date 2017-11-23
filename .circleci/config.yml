@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    general:
-        artifacts:
-           - "./reports/screenshots"
+    artifacts:
+       - "./reports/screenshots"
     docker:
       - image: circleci/node:7.10.1-browsers
     dependencies:
