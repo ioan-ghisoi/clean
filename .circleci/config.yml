@@ -1,55 +1,39 @@
-version: 2
-jobs:
-  build:
-      mysql:
-    image: mysql:5.5
-    environment:
-      - MYSQL_ROOT_PASSWORD=test
-      - MYSQL_DATABASE=test
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
-    ports:
-      - 3306:3306
-    environment:
-      PULSESTORM_MAGE2_FAKE_URL: "http://magento-2-travis.dev"
-      PULSESTORM_MAGE2_ADMIN_EMAIL: "johnny.shrewd@example.com"
-      PULSESTORM_MAGE2_ADMIN_FIRST_NAME: "Johnny"    
-      PULSESTORM_MAGE2_ADMIN_LAST_NAME: "Shrewd"
-      PULSESTORM_MAGE2_ADMIN_USERNAME: "admin"            
-      PULSESTORM_MAGE2_ADMIN_PASSWORD: "ih3artmagento"        
-      PULSESTORM_MAGE2_ADMIN_DBNAME: "magento_2_travis"
-    working_directory: /var/www/html
-    docker:
-      - image: php:7.0-apache
-        environment:
-          APP_ENV: test
-      - image: mysql:5.6
-        environment:
-          - MYSQL_ROOT_PASSWORD=ubuntu
-          - MYSQL_USER=ubuntu
-          - MYSQL_PASSWORD=ubuntu
-    steps:
-      - run:
-          name: Install system packages
-          command: apt-get update && apt-get -y install git
-      - run:
-          name: Install PHP extensions
-          command: docker-php-ext-install pdo
-      - checkout
-      - run:
-          name: Install Composer
-          command: |
-            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-            php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer invalid'; unlink('composer-setup.php'); } echo PHP_EOL;"
-            php composer-setup.php
-            php -r "unlink('composer-setup.php');"
-      - run:
-          name: Install MYSQL
-          command: |
-            mysql --version
-            mysql 'CREATE DATABASE magento_2_travis;';
-      - run:
-          name: Display PHP information
-          command: |
-            php -v
-            php composer.phar --version
+machine:
+  node:
+    version: 6
+
+dependencies:
+  cache_directories:
+    - "node_modules"
+    - "~/.npm"
+
+  override:
+    # Hack to use newer v. of phantom needs to update Chrome
+    - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - sudo dpkg -i google-chrome*.deb
+    - npm install -g npm
+    - npm install
+  post:
+    # - npm run start-ci #  :
+    # - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
+    # - tar -xzf sc-latest-linux.tar.gz
+
+test:
+  pre:
+    # - npm run test
+    # - sleep 30
+    # - cd sc-*-linux && ./bin/sc --user "yanns" --api-key "ac8561a1-ba7f-42c6-afd9-1dad08bac0d7" --readyfile ~/sauce_is_ready:
+    #     background: true
+    # # Wait for tunnel to be ready
+    # - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
+
+  post:
+  - npm run start
+  #- cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage
+    #- chimp chimp.js --browser="Safari" --platform="iOS" --platformVersion="9.3" --deviceName="iPhone 6 Simulator"
+    # - chimp chimp.js --browser="android" --platform="linux" --deviceType="phone"
+
+general:
+  artifacts:
+    - ".screenshots"
