@@ -6,7 +6,8 @@ jobs:
     dependencies:
       cache_directories:
         - "node_modules"
-        - "~/.npm"
+        - ~/.npm
+        - ~/.yarn-cache
     override:
     # Hack to use newer v. of phantom needs to update Chrome
       - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
