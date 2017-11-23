@@ -6,7 +6,8 @@ jobs:
            - "./reports/screenshots"
     docker:
       - image: circleci/node:7.10.1-browsers
-      - image: circleci/5.6-apache-browsers
+      - image: circleci/php:5.6
+      - image: circleci/php:5.6-apache
     dependencies:
       cache_directories:
         - "node_modules"
