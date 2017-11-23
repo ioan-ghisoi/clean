@@ -10,10 +10,10 @@ module.exports = {
     logLevel: 'silent',
     screenshotPath: './reports/screenshots',
     desiredCapabilities: {
-      chromeOptions: {
-        args: ['headless', 'disable-gpu'],
-      },
-      isHeadless: true,
+      // chromeOptions: {
+      //   args: ['headless', 'disable-gpu'],
+      // },
+      // isHeadless: true,
     },
     debug: true,
   },
