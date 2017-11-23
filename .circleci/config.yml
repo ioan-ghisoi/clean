@@ -1,26 +1,5 @@
 version: 2
 jobs:
-pre:
-- sudo service mysql stop
-- sudo rm -rf /etc/mysql
-- sudo rm -rf /var/lib/mysql
-- export DEBIAN_FRONTEND=noninteractive
-&& sudo -E apt-get -y remove mysql-server
-&& sudo -E apt-get -y remove mysql-community-server
-&& sudo -E apt-get -y remove mysql-client
-&& sudo -E apt-get -y remove mysql-common
-&& sudo -E apt-get -y remove mysql-community-client
-&& sudo -E apt-get -y remove mysql-apt-config
-&& sudo -E apt-get -y remove libmysqld-dev
-&& sudo -E apt-get -y remove libmysqlclient-dev
-&& sudo -E apt-get -y remove libmysqlclient18
-&& sudo -E apt-get -y remove libmysqlclient20
-&& sudo -E apt-get -y autoremove
-&& sudo -E apt-get -y install software-properties-common
-&& sudo -E dpkg -l | grep mysql
-&& sudo apt-add-repository -y 'deb http://ppa.launchpad.net/ondrej/mysql-experimental/ubuntu11 precise main'
-&& sudo apt-get update
-&& sudo -E apt-get -y install mysql-server-5.5
   build:
     environment:
       BASH_ENV: "~/.bin/bash"
@@ -59,10 +38,16 @@ pre:
       - run:
           name: Install MYSQL
           command: |
-            yes Y | apt-get install mysql-server -u johnny -p johnny
-            yes Y | apt-get install mysql-client -u johnny -p johnny
-            mysql --version
-            mysql 'CREATE DATABASE magento_2_travis;';
+            docker run
+            --detach
+            --name mysql
+            --publish 3306:3306
+            --env MYSQL_ALLOW_EMPTY_PASSWORD='yes'
+            --env MYSQL_DATABASE=circle_test
+            --env MYSQL_USER=ubuntu
+            --env MYSQL_PASSWORD=p455w0rd
+            mysql:5.7.11
+      ; sleep 10
       - run:
           name: Display PHP information
           command: |
