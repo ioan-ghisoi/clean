@@ -1,6 +1,11 @@
 version: 2
 jobs:
   build:
+          pre:
+        - cp ./httpd.conf.circle /etc/apache2/sites-available/default
+        - sudo a2enmod rewrite
+        - sudo service apache2 restart
+        
     machine:
     hosts:
       local.example.com: 127.0.0.1
@@ -13,10 +18,6 @@ jobs:
         - "node_modules"
         - ~/.npm
         - ~/.yarn-cache
-      pre:
-        - cp ./httpd.conf.circle /etc/apache2/sites-available/default
-        - sudo a2enmod rewrite
-        - sudo service apache2 restart
     override:
     # Hack to use newer v. of phantom needs to update Chrome
       - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
