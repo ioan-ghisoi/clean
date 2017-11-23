@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Install MYSQL
           command: |
-            sudo apt-get remove -y -qq --purge mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5 mysql-client-core-5.5
+            apt-get remove -y -qq --purge mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5 mysql-client-core-5.5
       - run:
           name: Display PHP information
           command: |
