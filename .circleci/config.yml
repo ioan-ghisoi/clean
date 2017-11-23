@@ -3,7 +3,7 @@ jobs:
   build:
     general:
         artifacts:
-           - "./reports/screenshots"
+           - "../reports/screenshots"
     docker:
       - image: circleci/node:7.10.1-browsers
       - image: circleci/php:5.6
