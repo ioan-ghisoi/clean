@@ -1,9 +1,13 @@
 version: 2
 jobs:
   build:
+    machine:
+    hosts:
+      local.example.com: 127.0.0.1
     general:
         artifacts:
            - "/home/circleci/project/reports/screenshots"
+           - "/var/log/apache2/"
     docker:
       - image: circleci/node:7.10.1-browsers
       - image: circleci/php:5.6
@@ -13,6 +17,10 @@ jobs:
         - "node_modules"
         - ~/.npm
         - ~/.yarn-cache
+      pre:
+        - cp ./httpd.conf.circle /etc/apache2/sites-available/default
+        - sudo a2enmod rewrite
+        - sudo service apache2 restart
     override:
     # Hack to use newer v. of phantom needs to update Chrome
       - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
@@ -33,6 +41,3 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
       - run: yarn test
-      - store_artifacts:
-          path: /home/circleci/project/reports/screenshots
-      - run: mysql -v
