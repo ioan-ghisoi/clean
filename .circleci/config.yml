@@ -33,7 +33,7 @@ jobs:
           name: Install MYSQL
           command: |
             apt-get install software-properties-common python-software-properties -y
-            add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty multiverse" && add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse"
+            add-apt-repository 'deb http://archive.ubuntu.com/ubuntu trusty universe'
             apt-get update -qq   
             # curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             apt-get remove -y -qq --purge mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5 mysql-client-core-5.5
