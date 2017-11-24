@@ -6,7 +6,8 @@ jobs:
       - image: circleci/php:7.1-node-browsers
     dependencies:
       cache_directories:
-        - ~/.cache/yarn
+        - ~/home/circleci/project/c_1
+        
       post:
         - sudo service apache2 restart
       override:
