@@ -6,7 +6,6 @@ jobs:
       - image: circleci/php:7.1-node-browsers
       - image: lephare/apache
       - image: alexcheng/magento2
-      - image: circleci/node:7
     dependencies:
       cache_directories:
         - ~/.cache/yarn
@@ -22,10 +21,10 @@ jobs:
       #     keys:
       #       - node-v1-{{ checksum "package.json" }}
       #       - node-v1-
-      # - save_cache:
-      #     key: node-v1-{{ checksum "package.json" }}
-      #     paths:
-      #       - node_modules
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       # - run: sudo apt-gset install apache2
       - run: pwd
       # - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
