@@ -6,7 +6,7 @@ jobs:
       - image: circleci/php:7.1-node-browsers
     dependencies:
       cache_directories:
-        - ~/home/circleci/project/c_1
+        - ~/.composer/cache
         
       post:
         - sudo service apache2 restart
