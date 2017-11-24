@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.1-node-browsers
+      - image: lephare/apache
       - image: alexcheng/magento2
     dependencies:
       cache_directories:
@@ -22,7 +23,7 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-      # - run: sudo apt-get install apache2
+      # - run: sudo apt-gset install apache2
       - run: pwd
       # - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       # - run: sudo service apache2 restart
