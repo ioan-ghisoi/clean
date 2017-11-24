@@ -31,7 +31,10 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
+      - run : cd /etc/apache2/
+      - run : ls
+      - run : cd sites-available/
+      - run: yes | cp /home/circleci/project/000-default.conf .
       - run: yarn test
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
