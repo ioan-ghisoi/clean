@@ -15,17 +15,17 @@ jobs:
       override:
         - echo "Ignore CircleCI default dependencies"
     steps:
-      - checkout
+      - checkouts
       - run: sudo apt install -y libsqlite3-dev
       - run: sudo composer self-update
-      - restore_cache:
-          keys:
-            - node-v1-{{ checksum "package.json" }}
-            - node-v1-
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      # - restore_cache:
+      #     keys:
+      #       - node-v1-{{ checksum "package.json" }}
+      #       - node-v1-
+      # - save_cache:
+      #     key: node-v1-{{ checksum "package.json" }}
+      #     paths:
+      #       - node_modules
       # - run: sudo apt-gset install apache2
       - run: pwd
       # - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
