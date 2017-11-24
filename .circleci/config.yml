@@ -2,22 +2,20 @@ version: 2
 jobs:
   build:        
     machine:
-      php:
-        version: 5.5.11
-      node:
-        version: 0.10.28
-      services:
-        - rabbitmq-server
-      hosts:
-        local.symfony2-standard-template: 127.0.0.1
+    php:
+      version: 5.5.11
+    node:
+      version: 0.10.28
+    services:
+      - rabbitmq-server
+    hosts:
+      local.symfony2-standard-template: 127.0.0.1
     docker:
       - image: circleci/node:7.10.1-browsers
     dependencies:
-      # commands run before CircleCI's inferred commands
-      pre:
+      pre: 
         - mysql -u ubuntu -e "Create database symfony2_standard_template"
         - cp config/php/php.ini ~/.phpenv/versions/$(phpenv global)/etc/conf.d/
-      # commands run after CircleCI's inferred commands
       post:
         - cp config/apache/dist.vhost.conf /etc/apache2/sites-available
         - a2ensite dist.vhost.conf
@@ -38,3 +36,18 @@ jobs:
       - cp /home/circleci/project/index.php /home/ubuntu/www
       # - sudo a2enmod rewrite
       # - sudo service apache2 restart
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: pwd
+      - run: yarn start
+      - store_artifacts:
+          path: /home/circleci/project/reports/screenshots
