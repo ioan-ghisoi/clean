@@ -17,6 +17,7 @@ jobs:
     # Hack to use newer v. of phantom needs to update Chrome
       - npm install -g yarn
       - yarn install
+      - sudo apt-get install apache2
       - yes | sudo cp /home/circleci/project/httpd.conf.circle /etc/apache2/sites-available
       - sudo a2enmod rewrite
       - sudo service apache2 restart
@@ -31,10 +32,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run : cd /etc/apache2/
-      - run : ls
-      - run : cd sites-available/
-      - run: yes | cp /home/circleci/project/000-default.conf .
+      - run: yarn test
+      - run: sudo apt-get install apache2
+      - run: yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
       - run: yarn test
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
