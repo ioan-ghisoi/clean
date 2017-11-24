@@ -28,6 +28,7 @@ jobs:
       # - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       # - run: sudo service apache2 restart
       - run: set -x
+      - run: sudo chown -R $(whoami) /usr/local/bin
       - run: curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
       - run: sudo chmod +x /usr/local/bin/docker-compose
       - run: docker-compose up -d
