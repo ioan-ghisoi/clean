@@ -35,7 +35,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
-      - run: apt install apache2
       - run: yarn start
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
