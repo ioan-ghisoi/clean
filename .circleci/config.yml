@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.1-node-browsers
-      - image: lephare/apache
+      - image: circleci/php:5.6-apache
       - image: alexcheng/magento2
     dependencies:
       cache_directories:
