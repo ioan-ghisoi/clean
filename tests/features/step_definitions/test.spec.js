@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('https://contenthub.dev');
+    browser.url('https://mg2.com');
     browser.pause(3000);
     console.log(browser.getSource());
     browser.waitUntil(function () {
