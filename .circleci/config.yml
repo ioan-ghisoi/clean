@@ -15,7 +15,7 @@ jobs:
       override:
         - echo "Ignore CircleCI default dependencies"
     steps:
-      - checkouts
+      - checkout
       - run: sudo apt install -y libsqlite3-dev
       - run: sudo composer self-update
       # - restore_cache:
