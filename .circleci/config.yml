@@ -23,5 +23,6 @@ jobs:
           paths:
             - node_modules
       - run: sudo apt-get install apache2
-      - run: yes | sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
+      - run: pwd
+      - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: sudo service apache2 restart
