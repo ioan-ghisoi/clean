@@ -29,6 +29,7 @@ jobs:
       - run: ls /usr/local/bin/composer
       - run: sudo cp /home/circleci/project/auth.json /usr/local/bin/composer
       - run: sudo service apache2 restart
+      - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 www
       - run: yarn start
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
