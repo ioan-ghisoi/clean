@@ -38,18 +38,3 @@ jobs:
       - cp /home/circleci/project/index.php /home/ubuntu/www
       # - sudo a2enmod rewrite
       # - sudo service apache2 restart
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: pwd
-      - run: yarn start
-      - store_artifacts:
-          path: /home/circleci/project/reports/screenshots
