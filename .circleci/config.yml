@@ -16,6 +16,8 @@ jobs:
             - node-v1-{{ checksum "package.json" }}
             - node-v1-
       - run: yarn install
+      - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/conf-available
+      - run: sudo rm /etc/apache2/conf-available javascript-common.conf
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}
           paths:
