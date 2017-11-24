@@ -30,8 +30,7 @@ jobs:
       - run: ls
       - run: pwd
       - run: sudo cp /home/circleci/project/auth.json ~/.composer
-      - run: sudo chmod -R 777 ~/.composer
-      - run: sudo chmod u+w ~/.composer/cache
+      - run: sudo chmod -R u+w ~/.composer
       - run: sudo mkdir cache ~/.composer
       - run: sudo mkdir magento2
       - run: sudo chmod 777 magento2
