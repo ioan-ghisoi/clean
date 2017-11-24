@@ -42,12 +42,12 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - run: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
+      - run: ls /etc/apache2/sites-available/
       - run: yarn start
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
