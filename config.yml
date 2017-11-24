@@ -55,7 +55,7 @@ jobs:
             docker-compose --project-name apache up -d
             docker ps -a
             sleep 10
-      - run:d
+      - run:
           name: LIVE Build Tests
           command: |
             docker exec apache_hg-web_1 /bin/bash /opt/tests/build_tests.sh
