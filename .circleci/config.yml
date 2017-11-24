@@ -2,9 +2,9 @@ version: 2
 
 jobs:
   build:
-    docker:
+    # docker:
       # - image: circleci/php:7.1-node-browsers
-      - image: alexcheng/magento2
+      # - image: alexcheng/magento2
     dependencies:
       cache_directories:
         - ~/.cache/yarn
@@ -24,7 +24,7 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: sudo apt-gset install apache2
+      - run: sudo apt-get install apache2
       - run: pwd
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: sudo service apache2 restart
