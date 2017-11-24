@@ -35,6 +35,7 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
+      - run: sudo yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
       - run: yarn install
       - save_cache:
           paths:
