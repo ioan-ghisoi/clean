@@ -7,6 +7,8 @@ jobs:
     dependencies:
       cache_directories:
         - ~/.cache/yarn
+      post:
+        - sudo service apache2 restart  
     steps:
       - checkout
       - run: sudo apt install -y libsqlite3-dev
