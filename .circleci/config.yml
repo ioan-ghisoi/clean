@@ -32,7 +32,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: sudo apt-get install apache2
+      - run: sudo apt-get install apache2 --fix-missing
       - run: yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
       - run: yarn test
       - store_artifacts:
