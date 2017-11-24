@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:        
-    machine:
+    machine: true
     php:
       version: 7.0.4
     pre:
@@ -14,7 +14,6 @@ jobs:
     dependencies:
       post:
         - sudo rm /etc/apache2/mods-enabled/php5.load #damit php 7 geht
-        - sudo cp /home/circleci/project/httpd.conf.circle /etc/apache2/sites-available
         - sudo a2ensite apache_ci.conf
         - sudo service apache2 restart
       cache_directories:
@@ -35,6 +34,18 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
+      - run:
+          name: Install Docker Compose
+          command: |
+            set -x
+            curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run:
+          name: Build Apache Docker image
+          command: |
+            cp .env.example .env
+            make build
       - run: yarn install
       - save_cache:
           paths:
