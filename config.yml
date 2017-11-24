@@ -36,3 +36,4 @@ jobs:
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
           destination: artifact-file
+          
