@@ -22,13 +22,13 @@ jobs:
         - ~/.npm
         - ~/.yarn-cache
     override:
-      # - npm install -g yarn
-      # - yarn install
-      # - sudo apt install apache2
+      - npm install -g yarn
+      - yarn install
+      - sudo apt install apache2
       - yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
       - cp /home/circleci/project/index.php /home/ubuntu/www
-      # - sudo a2enmod rewrite
-      # - sudo service apache2 restart
+      - sudo a2enmod rewrite
+      - sudo service apache2 restart
     steps:
       - checkout
       - restore_cache:
