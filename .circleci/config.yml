@@ -43,14 +43,8 @@ test:
     # Handled automatically by CircleCI
     # - npm install
     # - bundle install
-    - bower install
-    - grunt build --target=dist
-    - composer install -d dist --prefer-source --no-interaction --optimize-autoloader
-    - composer install -d src --prefer-source --no-interaction --optimize-autoloader
-
-  post: 
-    -run: yarn install
-    -run: yarn test
+    - yarn install
+    - yarn test
 
 # Deploying your code to your web servers
 # https://circleci.com/docs/configuration#deployment
