@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://johnny.magento.com');
+    browser.url('http://localhost');
     browser.pause(3000);
     browser.waitUntil(function () {
       return browser.isVisible('bodyd');
