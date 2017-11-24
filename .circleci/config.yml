@@ -26,12 +26,9 @@ jobs:
       - run: pwd
       # - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       # - run: sudo service apache2 restart
-      - run:
-        name: Install Docker Compose
-        command: |
-          set -x
-          curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-          chmod +x /usr/local/bin/docker-compose
+           - run: set -x
+           - run: curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+           - run: chmod +x /usr/local/bin/docker-compose
       - run: docker-compose up -d
       - run: yarn start
       - store_artifacts:
