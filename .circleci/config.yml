@@ -17,7 +17,7 @@ jobs:
     # Hack to use newer v. of phantom needs to update Chrome
       - npm install -g yarn
       - yarn install
-      - cp /home/circleci/project/httpd.conf.circle /etc/apache2/apache2.conf
+      - cp /home/circleci/project/httpd.conf.circle /etc/apache2/sites-available
       - sudo a2enmod rewrite
       - sudo service apache2 restart
     steps:
