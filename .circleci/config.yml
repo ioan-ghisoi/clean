@@ -2,31 +2,20 @@ version: 2
 jobs:
   build:        
     machine:
-    php:
-      version: 7.0.4
-    pre:
-      - curl -s https://packagecloud.io/install/repositories/circleci/trusty/script.deb.sh | sudo bash
-      - sudo apt-get install circleci-php-7.0.4=1
     hosts:
       local.example.com: 127.0.0.1
     docker:
       - image: circleci/node:7.10.1-browsers
     dependencies:
-      post:
-        - sudo rm /etc/apache2/mods-enabled/php5.load #damit php 7 geht
-        - sudo cp /home/circleci/project/httpd.conf.circle /etc/apache2/sites-available
-        - sudo a2ensite apache_ci.conf
-        - sudo service apache2 restart
       cache_directories:
         - "node_modules"
         - ~/.npm
         - ~/.yarn-cache
     override:
+    # Hack to use newer v. of phantom needs to update Chrome
       - npm install -g yarn
       - yarn install
-      - sudo apt install apache2
-      - yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
-      - cp /home/circleci/project/index.php /home/ubuntu/www
+      - cp /home/circleci/project/httpd.conf.circle /etc/apache2/apache2.conf
       - sudo a2enmod rewrite
       - sudo service apache2 restart
     steps:
@@ -35,14 +24,13 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - run: sudo yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: pwd
-      - run: yarn start
+      - run: yarn test
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
       - run: mysql -v
