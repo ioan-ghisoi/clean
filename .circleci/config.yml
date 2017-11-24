@@ -24,10 +24,10 @@ jobs:
           paths:
             - node_modules
       - run: sudo apt-get install apache2
-      - run: pwd
+      - run: ls
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-availabled
       - run: sudo cp /home/circleci/project/auth.json ~/.composer
-      - run: sudo chmod 777 /home/circleci/project/www
+      - run: sudo chmod 777 ~/project/www
       - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 www
       - run: yarn install
       - run: yarn start
