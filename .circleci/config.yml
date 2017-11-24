@@ -24,5 +24,5 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-      -run: sudo apt-get install apache2
+      - run: sudo apt-get install apache2
       - run: sudo service apache2 restart
