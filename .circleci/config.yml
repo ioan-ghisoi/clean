@@ -13,6 +13,8 @@ jobs:
         - echo "Ignore CircleCI default dependencies"
     steps:
       - checkout
+      - run: ls
+      - run: pwd
       - run: sudo apt install -y libsqlite3-dev
       - run: sudo composer self-update
       - restore_cache:
@@ -25,6 +27,7 @@ jobs:
             - node_modules
       - run: sudo apt-get install apache2
       - run: ls
+      - run: pwd
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-availabled
       - run: sudo cp /home/circleci/project/auth.json ~/.composer
       - run: sudo chmod 777 ~/project/www
