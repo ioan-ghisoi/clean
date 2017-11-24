@@ -29,7 +29,6 @@ jobs:
       - run: ls /usr/local/bin/composer
       - run: sudo cp /home/circleci/project/auth.json /usr/local/bin/composer
       - run: sudo service apache2 restart
-      - run: if [ ! -f /tmp/foo.txt ]; then yarn install fi
       - run: yarn start
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
