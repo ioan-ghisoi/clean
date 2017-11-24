@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.1-node-browsers
+      - image: circleci/mysql:5.6
     dependencies:
       cache_directories:
         - ~/.cache/yarn
@@ -25,6 +26,7 @@ jobs:
       - run: pwd
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: sudo service apache2 restart
+      - run: mysql
       - run: yarn start
       - store_artifacts:
           path: /home/circleci/project/reports/screenshots
