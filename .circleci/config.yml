@@ -2,9 +2,8 @@ version: 2
 
 jobs:
   build:
-    # docker:
-      # - image: circleci/php:7.1-node-browsers
-      # - image: alexcheng/magento2
+    docker:
+      - image: circleci/php:7.1-node-browsers
     dependencies:
       cache_directories:
         - ~/.cache/yarn
