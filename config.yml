@@ -1,73 +1,47 @@
 version: 2
 jobs:
-  build:
-    machine: true
-    working_directory: ~/logs
-
+  build:        
+    machine:
+    php:
+      version: 7.0.4
+    pre:
+      - curl -s https://packagecloud.io/install/repositories/circleci/trusty/script.deb.sh | sudo bash
+      - sudo apt-get install circleci-php-7.0.4=1
+    hosts:
+      local.example.com: 127.0.0.1
+    docker:
+      - image: circleci/node:7.10.1-browsers
+    dependencies:
+      post:
+        - sudo rm /etc/apache2/mods-enabled/php5.load #damit php 7 geht
+        - sudo cp /home/circleci/project/httpd.conf.circle /etc/apache2/sites-available
+        - sudo a2ensite apache_ci.conf
+        - sudo service apache2 restart
+      cache_directories:
+        - "node_modules"
+        - ~/.npm
+        - ~/.yarn-cache
+    override:
+      # - npm install -g yarn
+      # - yarn install
+      # - sudo apt install apache2
+      - yes | cp /home/circleci/project/000-default.conf /etc/apache2/sites-available/
+      - cp /home/circleci/project/index.php /home/ubuntu/www
+      # - sudo a2enmod rewrite
+      # - sudo service apache2 restart
     steps:
       - checkout
-      - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
-      - run:
-          name: Build Apache Docker image
-          command: |
-            cp .env.example .env
-            make build
-# DEV Build
-
-      - run:
-          name: Start DEV Container
-          command: |
-            set -x
-            ls -la
-            pwd
-            make run
-            docker ps -a
-            sleep 10
-      - run:
-          name: Global Environment Vars
-          command: |
-            docker exec apache /bin/bash -c "export"
-      - run:
-          name: DEV Build Tests
-          command: |
-            docker exec apache /bin/bash /opt/tests/build_tests.sh
-      - run:
-          name: Container Logs
-          command: |
-            mkdir -p ~/project/container-build
-            docker logs apache > ~/project/container-build/log_output-DEV_Apache.txt
-            docker logs apache_db > ~/project/container-build/log_output-DEV_MySQL.txt
-      - run:
-          name: Kill running containers
-          command: |
-            make stop && make rm
-# LIVE Build
-
-      - run:
-          name: Start LIVE Container
-          command: |
-            docker-compose --project-name apache up -d
-            docker ps -a
-            sleep 10
-      - run:
-          name: LIVE Build Tests
-          command: |
-            docker exec apache_hg-web_1 /bin/bash /opt/tests/build_tests.sh
-      - run:
-          name: Container Logs
-          command: |
-            mkdir -p ~/project/container-build
-            docker logs apache_hg-web_1 > ~/project/container-build/log_output-LIVE_Apache.txt
-            docker logs apache_hg-db_1 > ~/project/container-build/log_output-LIVE_MySQL.txt
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: pwd
+      - run: yarn start
       - store_artifacts:
-          path: ~/project/container-build
-          destination: raw-test-output
-
-      - store_test_results:
-          path: ~/project/container-build
+          path: /home/circleci/project/reports/screenshots
+      - run: mysql -v
