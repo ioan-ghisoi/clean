@@ -11,7 +11,9 @@ jobs:
       cache_directories:
         - ~/.cache/yarn
       post:
-        - sudo service apache2 restart  
+        - sudo service apache2 restart
+      override:
+        - echo "Ignore CircleCI default dependencies"
     steps:
       - checkout
       - run:
