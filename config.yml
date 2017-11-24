@@ -14,6 +14,9 @@ jobs:
         - sudo service apache2 restart  
     steps:
       - checkout
+      - run:
+        name: update-npm
+        command: 'sudo npm install -g npm@latest'
       - run: sudo apt install -y libsqlite3-dev
       - run: sudo composer self-update
       - restore_cache:
