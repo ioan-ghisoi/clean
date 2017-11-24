@@ -26,7 +26,7 @@ jobs:
       - run: sudo apt-get install apache2
       - run: pwd
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-availabled
-      - run: sudo mkdir -p ~/.composer && cp /home/circleci/project/auth.json ~/.composer/auth.json
+      - run: sudo cp /home/circleci/project/auth.json ~/.composer/auth.json
       - run: sudo service apache2 restart
       - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 www
       - run: yarn install
