@@ -6,15 +6,6 @@ jobs:
       local.example.com: 127.0.0.1
     docker:
       - image: circleci/node:7.10.1-browsers
-    dependencies:
-      pre:
-        - cp ./httpd.conf.circle /etc/apache2/sites-available/default
-        - sudo a2enmod rewrite
-        - sudo service apache2 restart
-      cache_directories:
-        - "node_modules"
-        - ~/.npm
-        - ~/.yarn-cache
     override:
       # - npm install -g yarn
       # - yarn install
@@ -25,6 +16,15 @@ jobs:
       # - sudo service apache2 restart
     steps:
       - checkout
+      dependencies:
+      pre:
+        - cp ./httpd.conf.circle /etc/apache2/sites-available/default
+        - sudo a2enmod rewrite
+        - sudo service apache2 restart
+      cache_directories:
+        - "node_modules"
+        - ~/.npm
+        - ~/.yarn-cache
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
