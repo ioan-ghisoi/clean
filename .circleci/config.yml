@@ -31,7 +31,7 @@ jobs:
       - run: sudo cp /home/circleci/project/auth.json ~/.composer
       - run: sudo mkdir magento2
       - run: sudo chmod 777 magento2
-      - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
+      - run: sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-availabled
       - run: sudo service apache2 reload
       - run: yarn install
