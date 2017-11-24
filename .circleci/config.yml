@@ -26,7 +26,7 @@ jobs:
       - run: sudo apt-get install apache2
       - run: pwd
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
-      - runL: sudo find / -name '*composer*'
+      - run: sudo find / -name '*composer*'
       - run: sudo service apache2 restart
       - run: yarn install
       - run: yarn start
