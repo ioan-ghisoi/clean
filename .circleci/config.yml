@@ -3,7 +3,10 @@ jobs:
   build:        
     machine:
     php:
-      version: 7.0.17
+      version: 7.0.4
+    pre:
+      - curl -s https://packagecloud.io/install/repositories/circleci/trusty/script.deb.sh | sudo bash
+      - sudo apt-get install circleci-php-7.0.4=1
     hosts:
       local.example.com: 127.0.0.1
     docker:
