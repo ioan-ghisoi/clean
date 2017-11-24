@@ -27,3 +27,6 @@ jobs:
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: sudo service apache2 restart
       - run: yarn start
+      - store_artifacts:
+          path: /home/circleci/project/reports/screenshots
+          destination: artifact-file
