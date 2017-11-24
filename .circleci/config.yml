@@ -4,6 +4,9 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.1-node-browsers
+    dependencies:
+      cache_directories:
+        - ~/.cache/yarn
     steps:
       - checkout
       - run: sudo apt install -y libsqlite3-dev
