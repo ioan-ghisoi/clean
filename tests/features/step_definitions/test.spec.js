@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://magento-2-travis.dev');
+    browser.url('http://localhost');
     browser.pause(3000);
     console.log(browser.getSrc());
     browser.waitUntil(function () {
