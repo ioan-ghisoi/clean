@@ -17,9 +17,6 @@ jobs:
       - run: ls
       - run: pwd
       - run: apt install -y libsqlite3-dev
-      - run: which composer
-      - run: rm -rf /usr/local/bin/composer
-      - run: rm -rf ~/.composer/cache/
       - run: apt-get update
       - run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
       - run: composer self-update
