@@ -58,6 +58,7 @@ jobs:
       - run: sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html/mg/2
       - run: ls
       - run: pwd
+      - run: sudo chmod 777 /var/www/html/mg/2/var/ && sudo chown www-data:www-data . -R
       - run: sudo composer install
       - run: sudo service apache2 restart
       - run: cd /home/circleci/project/
