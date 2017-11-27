@@ -13,10 +13,8 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://www.127.0.0.1/mg/2');
-    browser.pause(10000);
+    browser.url('http://www.127.0.0.1/mg/2/index.php');
     console.log(browser.getUrl());
-    browser.pause(5000);
     console.log(browser.getSource());
     browser.waitUntil(function () {
       return browser.isVisible('#hhhnkjn');
