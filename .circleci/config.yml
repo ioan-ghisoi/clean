@@ -34,7 +34,6 @@ jobs:
       - run: sudo apt-get install apache2
       - run: ls
       - run: pwd
-      - run: sudo chmod 755 ~/.composer
       - run: sudo mkdir magento2
       - run: sudo chmod 777 magento2
       - run: sudo cp /home/circleci/project/auth.json magento2
