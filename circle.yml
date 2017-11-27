@@ -19,16 +19,18 @@ dependencies:
 
     - sudo php -v
     - mysql -u ubuntu -e "create database magento"
+    - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
+    - sudo service apache2 restart
 
   post:
     # Copy Apache conf into `site-available`
-    - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
+    #- sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
     
     # Use `a2ensite` to create a symlink for the config
     #- a2ensite apache-ci.conf
     
     # Restart the Apache server
-    - sudo service apache2 restart
+    #- sudo service apache2 restart
 
 test:
   override:
