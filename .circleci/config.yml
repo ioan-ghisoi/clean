@@ -36,6 +36,7 @@ jobs:
       - run: pwd
       - run: sudo mkdir magento2
       - run: sudo chmod 777 magento2
+      - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: sudo cp /home/circleci/project/meh/index.html magento2
       - run: sudo service apache2 start
       - run: cd ..
