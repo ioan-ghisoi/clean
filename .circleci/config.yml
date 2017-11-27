@@ -39,7 +39,6 @@ jobs:
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: sudo cp /home/circleci/project/meh/index.html magento2
       - run: sudo service apache2 start
-      - run: cd ..
       - run: yarn install
       - run: yarn start
       - store_artifacts:
