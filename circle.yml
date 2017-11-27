@@ -29,8 +29,10 @@ dependencies:
     - composer init --no-interaction
     - sudo mkdir magento2
     - sudo chmod 777 magento2
+    - sudo chmod 775 /usr/local/bin
     - composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
     - composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
+    - sudo composer install
     - sudo chmod -R 777 magento2
 
 
