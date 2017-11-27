@@ -52,10 +52,10 @@ jobs:
       - run: sudo chmod 777 /var/www/html/mg
       - run: composer init --no-interaction
       - run: cd /var/www/html/mg
-      - run: sudo mkdir 2
-      - run: sudo chmod 777 2
+      - run: sudo mkdir /var/www/html/mg/2
+      - run: sudo chmod 777 /var/www/html/mg/2
       - run: composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
-      - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 2
+      - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html/mg/2
       - run: ls
       - run: pwd
       - run: composer install
