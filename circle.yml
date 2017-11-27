@@ -27,6 +27,7 @@ dependencies:
     - sudo service apache2 restart
     - cd /home/ubuntu/clean/meh
     - composer init --no-interaction
+    - cd meh
     - sudo mkdir magento2
     - sudo chmod 777 magento2
     - sudo chmod 775 /usr/local/bin
