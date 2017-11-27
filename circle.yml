@@ -16,11 +16,13 @@ dependencies:
     - sudo sudo a2dismod php5
     - sudo service apache2 restart
     - sudo apt-get install php5.6-xml
-
+    - sudo apt-get install curl -y
+    - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
     - sudo php -v
     - mysql -u ubuntu -e "create database magento"
     - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
     - sudo service apache2 restart
+    - curl checkout-com-plugin.dev
 
   post:
     # Copy Apache conf into `site-available`
