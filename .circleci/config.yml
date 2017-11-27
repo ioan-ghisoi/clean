@@ -34,7 +34,7 @@ jobs:
       - run: sudo apt-get install apache2
       - run: ls
       - run: pwd
-      - run: sudo cp /home/circleci/project/000-default.conf /var/www/html
+      - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
       - run: yarn install
       - run: yarn start
       - store_artifacts:
