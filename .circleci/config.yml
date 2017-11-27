@@ -35,6 +35,7 @@ jobs:
       - run: ls
       - run: pwd
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
+      - run: sudo cp /home/circleci/project/meh/index.html /var/www/html
       - run: yarn install
       - run: yarn start
       - store_artifacts:
