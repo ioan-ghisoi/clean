@@ -14,9 +14,9 @@ export default function () {
   });
   this.Given(/^I check google$/, () => {
     browser.url('http://johnny-shrewd-test.dev');
-    browser.pause(3000);
+    browser.pause(5000);
     browser.waitUntil(function () {
-      return browser.isVisible('bodyd');
+      return browser.isVisible('#hhhnkjn');
     }, VAL.timeout_out, 'body should be visible');
   });
   this.Given(/^I disable the url secret key encryption$/, () => {
