@@ -1,4 +1,5 @@
 version: 2
+  build:
 machine:
   timezone:
     Europe/Copenhagen
