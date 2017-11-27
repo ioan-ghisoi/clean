@@ -2,6 +2,9 @@ machine:
   timezone:
     Europe/Copenhagen
 
+  node:
+    version: 6
+
   # This will be added to the `/etc/hosts` file
   hosts:
     checkout-com-plugin.dev: 127.0.0.1
@@ -22,7 +25,14 @@ dependencies:
     - mysql -u ubuntu -e "create database magento"
     - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
     - sudo service apache2 restart
-    - curl checkout-com-plugin.dev
+    - cd /home/ubuntu/clean/meh
+    - composer init --no-interaction
+    - sudo mkdir magento2
+    - sudo chmod 777 magento2
+    - composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
+    - composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
+    - sudo chmod -R 777 magento2
+
 
   post:
     # Copy Apache conf into `site-available`
