@@ -10,8 +10,6 @@ jobs:
         
       post:
         - sudo service apache2 restart
-      override:
-        - echo "Ignore CircleCI default dependencies"
     steps:
       - checkout
       - run: ls
