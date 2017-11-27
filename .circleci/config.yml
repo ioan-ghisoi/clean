@@ -44,6 +44,8 @@ jobs:
       - run: sudo docker-php-ext-install intl
       - run: sudo docker-php-ext-install gd
       - run: sudo docker-php-ext-install mcrypt
+      - run: sudo docker-php-ext-configure xsl
+      - run: sudo docker-php-ext-install xsl
       - run: composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
       - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
       - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-availabled
