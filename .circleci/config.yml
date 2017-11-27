@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 7.0-apache-browsers
+      - image: circleci/php:7.1-node-browsers
     dependencies:
       cache_directories:
         - ~/.composer/cache
