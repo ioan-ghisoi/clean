@@ -40,7 +40,7 @@ jobs:
       - run: docker-php-ext-install intl
       - run: docker-php-ext-install gd
       - run: docker-php-ext-install mcrypt
-      #- run: apt-get install -y python-libxml2 libxslt-dev libxml2-dev
+      - run: apt-get install python-libxml2 libxslt-dev libxml2-dev -y
       - run: apt-get install -y php5-xsl
       - run: php5enmod xsl
       - run: service apache2 restart
