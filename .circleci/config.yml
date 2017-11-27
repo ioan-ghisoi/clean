@@ -50,11 +50,11 @@ jobs:
       - run: sudo service apache2 restart
       - run: sudo docker-php-ext-install xsl
       - run: sudo docker-php-ext-install zip
+      - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
+      - run: sudo service apache2 reload
       - run: composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
       - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
       - run: composer install
-      - run: sudo cp /home/circleci/project/000-default.conf /etc/apache2/sites-available
-      - run: sudo service apache2 reload
       - run: cd ..
       - run: yarn install
       - run: yarn start
