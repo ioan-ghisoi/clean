@@ -9,7 +9,7 @@ jobs:
         - ~/.composer/cache
         
       post:
-        - sudo service apache2 restart
+        -  service apache2 restart
       override:
         - echo "Ignore CircleCI default dependencies"
     steps:
@@ -17,12 +17,12 @@ jobs:
       - run: ls
       - run: pwd
       - run: apt install -y libsqlite3-dev
-      - run: sudo which composer
-      - run: sudo rm -rf /usr/local/bin/composer
-      - run: sudo rm -rf ~/.composer/cache/
-      - run: sudo apt-get update
-      - run: sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-      - run: sudo composer self-update
+      - run: which composer
+      - run: rm -rf /usr/local/bin/composer
+      - run: rm -rf ~/.composer/cache/
+      - run: apt-get update
+      - run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      - run: composer self-update
       - restore_cache:
           keys:
             - node-v1-{{ checksum "package.json" }}
@@ -31,36 +31,36 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: sudo apt-get install apache2
+      - run: apt-get install apache2
       - run: ls
       - run: pwd
-      - run: sudo mkdir /var/www/html/mg
+      - run: mkdir /var/www/html/mg
       - run: pwd
-      - run: sudo apt-get install libzip-dev libwebp-dev libjpeg-dev libpng-dev libz-dev libxpm-dev libmcrypt-dev
-      - run: sudo apt-get install -y libpng-dev
-      - run: sudo apt-get update && sudo apt-get install -y zlib1g-dev libicu-dev g++
-      - run: sudo docker-php-ext-configure intl
-      - run: sudo docker-php-ext-install intl
-      - run: sudo docker-php-ext-install gd
-      - run: sudo docker-php-ext-install mcrypt
-      - run: sudo apt-get install python-libxml2 libxslt-dev libxml2-dev
-      - run: sudo apt-get install php5-xsl
-      - run: sudo php5enmod xsl
-      - run: sudo service apache2 restart
-      - run: sudo docker-php-ext-install xsl
-      - run: sudo docker-php-ext-install zip
-      - run: sudo chmod 777 /var/www/html/mg
+      - run: apt-get install libzip-dev libwebp-dev libjpeg-dev libpng-dev libz-dev libxpm-dev libmcrypt-dev
+      - run: apt-get install -y libpng-dev
+      - run: apt-get update && sudo apt-get install -y zlib1g-dev libicu-dev g++
+      - run: docker-php-ext-configure intl
+      - run: docker-php-ext-install intl
+      - run: docker-php-ext-install gd
+      - run: docker-php-ext-install mcrypt
+      - run: apt-get install python-libxml2 libxslt-dev libxml2-dev
+      - run: apt-get install php5-xsl
+      - run: php5enmod xsl
+      - run: service apache2 restart
+      - run: docker-php-ext-install xsl
+      - run: docker-php-ext-install zip
+      - run: chmod 777 /var/www/html/mg
       - run: composer init --no-interaction
       - run: cd /var/www/html/mg
-      - run: sudo mkdir /var/www/html/mg/2
-      - run: sudo chmod 777 /var/www/html/mg/2
-      - run: sudo composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
-      - run: sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html/mg/2
-      - run: sudo chmod -R 777 /var/www/html/mg/2/
+      - run: mkdir /var/www/html/mg/2
+      - run: chmod 777 /var/www/html/mg/2
+      - run: composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
+      - run: composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html/mg/2
+      - run: chmod -R 777 /var/www/html/mg/2/
       - run: ls
       - run: pwd
-      - run: sudo composer install
-      - run: sudo service apache2 restart
+      - run: composer install
+      - run: service apache2 restart
       - run: cd /home/circleci/project/
       - run: yarn install
       - run: yarn start
