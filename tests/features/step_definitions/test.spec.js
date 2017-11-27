@@ -15,7 +15,6 @@ export default function () {
   this.Given(/^I check google$/, () => {
     browser.url('http://johnny-shrewd-test.com');
     browser.pause(3000);
-    console.log(browser.getSrc());
     browser.waitUntil(function () {
       return browser.isVisible('bodyd');
     }, VAL.timeout_out, 'body should be visible');
