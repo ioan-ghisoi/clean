@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://localhost');
+    browser.url('http://www.johnny-shrewd.dev');
     browser.pause(10000);
     console.log(browser.getUrl());
     browser.pause(5000);
