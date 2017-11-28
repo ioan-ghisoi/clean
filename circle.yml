@@ -14,7 +14,7 @@ general:
 dependencies:
   override:
     - echo "Ignore CircleCI default dependencies"
-    - yarn
+    - yarn install
   pre:
     # No password is required for the MySQL user `ubuntu`
     # - sudo add-apt-repository ppa:ondrej/php -y
@@ -48,11 +48,10 @@ dependencies:
     # - composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
     # - sudo composer install
     # - sudo chmod -R 777 magento2
+    - yarn start
 
 
   post:
-    - yarn install
-    - yarn start
     # Copy Apache conf into `site-available`
     #- sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
     
