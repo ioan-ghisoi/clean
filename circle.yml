@@ -15,6 +15,7 @@ general:
 dependencies:
   override:
     - echo "Ignore CircleCI default dependencies"
+    - yarn
   pre:
     # No password is required for the MySQL user `ubuntu`
     - sudo add-apt-repository ppa:ondrej/php -y
@@ -65,3 +66,4 @@ dependencies:
 test:
   override:
     - echo "Ignore CircleCI default test"
+    - yarn test
