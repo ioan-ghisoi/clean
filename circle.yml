@@ -17,8 +17,8 @@ dependencies:
     # - sudo service apache2 restart
     # - sudo add-apt-repository ppa:ondrej/php -y
     # - sudo apt-get update
-    # - sudo apt-get install curl -y
-    # - sudo apt-get install php5.6 -y 
+    - sudo apt-get install curl -y
+    - sudo apt-get install php5.6 -y 
     # - sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml -y
     # - sudo sudo a2dismod php5
     # - sudo service apache2 restart
