@@ -1,21 +1,30 @@
 machine:
   node:
-      version: 7
-  timezone:
-    Europe/Copenhagen
-general:
-  artifacts:
-    - "/home/ubuntu/clean/reports/screenshots"
-
-  # This will be added to the `/etc/hosts` file
-  hosts:
-    checkout-com-plugin.dev: 127.0.0.1
+    version: 6
 
 dependencies:
+  cache_directories:
+    - "node_modules"
+    - "~/.npm"
+
+override:
+    # Hack to use newer v. of phantom needs to update Chrome
+    - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - sudo dpkg -i google-chrome*.deb
+    - npm install -g npm
+    - npm install
+  post:
+    # - npm run start-ci #  :
+    # - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
+    # - tar -xzf sc-latest-linux.tar.gz
+  hosts:
+    checkout-com-plugin.dev: 127.0.0.1
+test:
   override:
-    - echo "Ignore CircleCI default dependencies"
-    - yarn install
+   - npm test -- --runInBand
   pre:
+  - npm run start
     # No password is required for the MySQL user `ubuntu`
     # - sudo add-apt-repository ppa:ondrej/php -y
     # - sudo apt-get update
@@ -48,11 +57,11 @@ dependencies:
     # - composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
     # - sudo composer install
     # - sudo chmod -R 777 magento2
-    - yarn start
+    # - yarn start
 
 
-  post:
-    # Copy Apache conf into `site-available`
+post:
+  - npm run start
     #- sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
     
     # Use `a2ensite` to create a symlink for the config
@@ -61,7 +70,6 @@ dependencies:
     # Restart the Apache server
     #- sudo service apache2 restart
 
-test:
-  override:
-    - echo "Ignore CircleCI default test"
-    - yarn test
+general:
+  artifacts:
+    - ".screenshots"
