@@ -13,6 +13,8 @@ general:
     checkout-com-plugin.dev: 127.0.0.1
 
 dependencies:
+  override:
+    - echo "Ignore CircleCI default dependencies"
   pre:
     # No password is required for the MySQL user `ubuntu`
     - sudo add-apt-repository ppa:ondrej/php -y
@@ -60,11 +62,6 @@ dependencies:
     # Restart the Apache server
     #- sudo service apache2 restart
 
-
 test:
   override:
-    # This is just for us to see that the WP Pusher plugin was actually installed and is active
-    #- ./wp-cli.phar plugin list --path=wordpress
-    
-    # Finally, run our Behat features
-    #- vendor/bin/behat
+    - echo "Ignore CircleCI default test"
