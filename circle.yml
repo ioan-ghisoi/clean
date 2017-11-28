@@ -1,8 +1,8 @@
 machine:
+  node:
+      version: 7
   timezone:
     Europe/Copenhagen
-  node:
-    version: 6.2.2
 general:
   artifacts:
     - "/home/ubuntu/clean/reports/screenshots"
