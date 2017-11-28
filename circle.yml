@@ -34,8 +34,13 @@ dependencies:
     - sudo chmod 777 magento2
     - sudo chmod 775 /usr/local/bin
     - sudo chmod -R 777 /home/ubuntu/.composer
-    - composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
-    - composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
+    - sudo apt-get install php5.6-curl
+    - sudo apt-get install php5.6-gd
+    - sudo apt-get install php5.6-intl
+    - sudo apt-get install php5.6-zip
+    - sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+    - sudo composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
+    - sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
     - sudo composer install
     - sudo chmod -R 777 magento2
   post:
