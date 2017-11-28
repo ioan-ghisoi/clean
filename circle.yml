@@ -10,7 +10,7 @@ machine:
     checkout-com-plugin.dev: 127.0.0.1
 
   store_artifacts:
-    path: /home/circleci/project/reports/screenshots
+    path: /home/ubuntu/clean/reports/screenshots
     destination: artifact-file
 
 dependencies:
