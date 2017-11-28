@@ -45,7 +45,7 @@ dependencies:
 
 test:
   override:
-   - npm test -- --runInBand
+   - npm run start
   pre:
     # - npm run test
     # - sleep 30
@@ -55,7 +55,7 @@ test:
     # - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
 
   post:
-  - npm run start
+  # - npm run start
 
 general:
   artifacts:

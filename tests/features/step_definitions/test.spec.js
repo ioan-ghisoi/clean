@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://127.0.0.1/mg/2/index.php');
+    browser.url('http://checkout-com-plugin.dev');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
