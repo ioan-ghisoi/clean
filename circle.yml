@@ -51,7 +51,7 @@ dependencies:
     - sudo chmod -R 777 /var/www/html
     - sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html
     - cd /var/www/html
-    - sudo php bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://localhost/magetno" --db-host 127.0.0.1 --db-name magento --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
+    - sudo php bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://localhost/" --db-host 127.0.0.1 --db-name magento --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
     - sudo composer install
     - sudo chmod -R 777 /var/www/html
   post:
