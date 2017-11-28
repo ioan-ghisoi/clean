@@ -1,0 +1,12 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: alexcheng/magento2
+    steps:
+      - checkout
+      - run: ls
+      - store_artifacts:
+          path: /home/circleci/project/reports/screenshots
+          destination: artifact-file
