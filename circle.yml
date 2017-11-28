@@ -46,6 +46,9 @@ dependencies:
     
     # Restart the Apache server
     #- sudo service apache2 restart
+    - store_artifacts:
+          path: /home/circleci/project/reports/screenshots
+          destination: artifact-file
 
 test:
   override:
