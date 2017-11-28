@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://local.magento');
+    browser.url('http://localhost');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
