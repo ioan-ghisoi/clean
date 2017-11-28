@@ -46,7 +46,7 @@ dependencies:
     - sudo apt-get install apache2 -y
     - sudo apt-get install libapache2-mod-php5
     - sudo composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
-    - sudo rm  /var/www/html/index.php
+    - sudo rm  /var/www/html/index.html
     - sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html
     - cd /var/www/html
     - sudo chmod -R 777 /var/www/html
