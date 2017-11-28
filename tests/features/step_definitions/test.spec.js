@@ -13,11 +13,11 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://localhost/');
+    browser.url('http://local.magento');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
-      return browser.isVisible('#hhhnkjn');
+      return browser.isVisible('#username');
     }, VAL.timeout_out, 'body should be visible');
   });
   this.Given(/^I disable the url secret key encryption$/, () => {
