@@ -9,6 +9,10 @@ machine:
   hosts:
     checkout-com-plugin.dev: 127.0.0.1
 
+  store_artifacts:
+    path: /home/circleci/project/reports/screenshots
+    destination: artifact-file
+
 dependencies:
   pre:
     # No password is required for the MySQL user `ubuntu`
@@ -46,9 +50,7 @@ dependencies:
     
     # Restart the Apache server
     #- sudo service apache2 restart
-    - store_artifacts:
-          path: /home/circleci/project/reports/screenshots
-          destination: artifact-file
+
 
 test:
   override:
