@@ -10,6 +10,7 @@ before_install:
   - docker pull alexcheng/magento2
   - docker-compose up -d
   - sudo cat /etc/apache2/sites-enabled/000-default.conf
+  - sudo ls /var/www/html
 
 script:
   - npm test
