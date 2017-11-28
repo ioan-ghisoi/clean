@@ -24,6 +24,11 @@ dependencies:
     - sudo apt-get install php5.6-xml
     - sudo apt-get install curl -y
     - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+    - curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - sudo dpkg -i google-chrome.deb
+    - sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+    
     - sudo php -v
     - mysql -u ubuntu -e "create database magento"
     - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
