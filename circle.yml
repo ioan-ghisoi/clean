@@ -1,6 +1,9 @@
 machine:
   timezone:
     Europe/Copenhagen
+general:
+  artifacts:
+    - "/home/ubuntu/clean/reports/screenshots"
 
   node:
     version: 6
@@ -8,10 +11,6 @@ machine:
   # This will be added to the `/etc/hosts` file
   hosts:
     checkout-com-plugin.dev: 127.0.0.1
-
-  store_artifacts:
-    path: /home/ubuntu/clean/reports/screenshots
-    destination: artifact-file
 
 dependencies:
   pre:
@@ -35,6 +34,7 @@ dependencies:
     - sudo mkdir magento2
     - sudo chmod 777 magento2
     - sudo chmod 775 /usr/local/bin
+    - sudo chmod -R 777 /home/ubuntu/.composer
     - composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
     - composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
     - sudo composer install
@@ -42,6 +42,7 @@ dependencies:
 
 
   post:
+    - yarn 
     # Copy Apache conf into `site-available`
     #- sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
     
