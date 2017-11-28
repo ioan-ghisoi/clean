@@ -9,37 +9,37 @@ dependencies:
 
   override:
     # Hack to use newer v. of phantom needs to update Chrome
-    - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
-    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - sudo dpkg -i google-chrome*.deb
-    - npm install -g npm
-    - npm install
-    - sudo service apache2 restart
-    - sudo add-apt-repository ppa:ondrej/php -y
-    - sudo apt-get update
-    - sudo apt-get install curl -y
-    - sudo apt-get install php5.6 -y 
-    - sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml -y
-    - sudo sudo a2dismod php5
-    - sudo service apache2 restart
-    - sudo apt-get install php5.6-xml
-    - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-    - sudo php -v
-    - mysql -u ubuntu -e "create database magento"
+    # - sudo apt-get install libxss1 libappindicator1 libindicator7 lsb-base
+    # - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    # - sudo dpkg -i google-chrome*.deb
+    # - npm install -g npm
+    # - npm install
+    # - sudo service apache2 restart
+    # - sudo add-apt-repository ppa:ondrej/php -y
+    # - sudo apt-get update
+    # - sudo apt-get install curl -y
+    # - sudo apt-get install php5.6 -y 
+    # - sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml -y
+    # - sudo sudo a2dismod php5
+    # - sudo service apache2 restart
+    # - sudo apt-get install php5.6-xml
+    # - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+    # - sudo php -v
+    # - mysql -u ubuntu -e "create database magento"
     # - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
-    - sudo service apache2 restart
-    - cd /home/ubuntu/clean/meh
-    - composer init --no-interaction
-    - cd meh
-    - sudo mkdir magento2
-    - sudo chmod 777 magento2
-    - sudo chmod 775 /usr/local/bin
-    - sudo chmod -R 777 /home/ubuntu/.composer
-    - sudo apt-get install php5.6-curl
-    - sudo apt-get install php5.6-gd
-    - sudo apt-get install php5.6-intl
-    - sudo apt-get install php5.6-zip
-    - sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+    # - sudo service apache2 restart
+    # - cd /home/ubuntu/clean/meh
+    # - composer init --no-interaction
+    # - cd meh
+    # - sudo mkdir magento2
+    # - sudo chmod 777 magento2
+    # - sudo chmod 775 /usr/local/bin
+    # - sudo chmod -R 777 /home/ubuntu/.composer
+    # - sudo apt-get install php5.6-curl
+    # - sudo apt-get install php5.6-gd
+    # - sudo apt-get install php5.6-intl
+    # - sudo apt-get install php5.6-zip
+    # - sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
 
     - sudo apt-get --purge remove apache2
     - sudo apt-get autoremove
@@ -60,7 +60,7 @@ test:
   override:
    - npm run start
   pre:
-    # - npm run test
+     - npm run test
     # - sleep 30
     # - cd sc-*-linux && ./bin/sc --user "yanns" --api-key "ac8561a1-ba7f-42c6-afd9-1dad08bac0d7" --readyfile ~/sauce_is_ready:
     #     background: true
