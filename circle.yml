@@ -1,12 +1,11 @@
 machine:
   timezone:
     Europe/Copenhagen
+  node:
+    version: 6.2.2
 general:
   artifacts:
     - "/home/ubuntu/clean/reports/screenshots"
-
-  node:
-    version: 6.2.2
 
   # This will be added to the `/etc/hosts` file
   hosts:
