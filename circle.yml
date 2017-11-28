@@ -6,7 +6,7 @@ general:
     - "/home/ubuntu/clean/reports/screenshots"
 
   node:
-    version: 6
+    version: 6.2.2
 
   # This will be added to the `/etc/hosts` file
   hosts:
@@ -47,6 +47,7 @@ dependencies:
 
 
   post:
+    - yarn install
     - yarn start
     # Copy Apache conf into `site-available`
     #- sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
