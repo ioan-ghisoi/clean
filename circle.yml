@@ -50,7 +50,7 @@ dependencies:
     - sudo mkdir /var/www/html
     - sudo chmod -R 777 /var/www/html
     - sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html
-    - cu /var/www/html
+    - cd /var/www/html
     - sudo composer install
     - sudo chmod -R 777 /var/www/html
   post:
