@@ -18,7 +18,7 @@ dependencies:
     - sudo apt-get autoremove
     - sudo apt-get install apache2 -y
     - sudo service apache2 restart
-    - apt-get install libapache2-mod-php5
+    - sudo apt-get install libapache2-mod-php5
     - sudo add-apt-repository ppa:ondrej/php -y
     - sudo apt-get update
     - sudo apt-get install curl -y
@@ -44,10 +44,6 @@ dependencies:
     - sudo apt-get install php5.6-intl
     - sudo apt-get install php5.6-zip
     - sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
-
-    - sudo apt-get install libzip-dev libwebp-dev libjpeg-dev libpng-dev libz-dev libxpm-dev libmcrypt-dev
-    - sudo apt-get install python-libxml2 libxslt-dev libxml2-dev
-
     - sudo composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
     - sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 magento2
     - sudo composer install
