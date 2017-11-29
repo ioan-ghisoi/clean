@@ -21,10 +21,10 @@ dependencies:
 
   post:
     # Copy Apache conf into `site-available`
-    - cp ~/clean/apache-ci.conf /etc/apache2/sites-available
+    - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
     
     # Use `a2ensite` to create a symlink for the config
-    - a2ensite apache-ci.conf
+    - sudo a2ensite apache-ci.conf
     
     # Restart the Apache server
     - sudo service apache2 restart
