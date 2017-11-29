@@ -21,7 +21,7 @@ dependencies:
 
   post:
     # Copy Apache conf into `site-available`
-    - cp ~/wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
+    - cp ~/clean/apache-ci.conf /etc/apache2/sites-available
     
     # Use `a2ensite` to create a symlink for the config
     - a2ensite apache-ci.conf
