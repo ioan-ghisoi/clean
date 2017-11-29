@@ -40,8 +40,10 @@ dependencies:
     - sudo a2ensite apache-ci.conf
     
     # Restart the Apache server
-    # - sudo apt-get purge libapache2-mod-php5
-    # - sudo apt-get update && sudo apt-get install libapache2-mod-php5
+    - sudo apt-get purge libapache2-mod-php5
+    - cd /etc/apache2/mods-enabled
+    - rm php5.conf 
+    - rm php5.load 
     - sudo service apache2 restart
 
 
