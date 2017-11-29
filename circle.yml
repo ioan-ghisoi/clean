@@ -42,8 +42,7 @@ dependencies:
     # Restart the Apache server
     - sudo apt-get purge libapache2-mod-php5
     - cd /etc/apache2/mods-enabled
-    - rm php5.conf 
-    - rm php5.load 
+    - sudo rm php5.conf 
     - sudo service apache2 restart
 
 
