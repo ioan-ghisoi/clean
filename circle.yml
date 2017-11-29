@@ -34,6 +34,21 @@ dependencies:
     - sudo service apache2 restart
     - sudo apt-get install libapache2-mod-php5
 
+
+    - sudo apt-get install php5.6-curl
+    - sudo apt-get install php5.6-gd
+    - sudo apt-get install php5.6-intl
+    - sudo apt-get install php5.6-zip
+    - sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml -y
+    - cd ~/clean
+    - sudo composer init --no-interaction
+    - sudo composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
+    - sudo mkdir /var/www/html/magento2
+    - sudo composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html/magento2
+    - sudo chmod -R 777 /var/www/html/magento2
+    - sudo composer install
+    
+
 test:
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active

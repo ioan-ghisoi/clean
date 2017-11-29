@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://wppusher-plugin.dev');
+    browser.url('http://wppusher-plugin.dev/magento2');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
