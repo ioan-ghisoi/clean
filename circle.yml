@@ -29,6 +29,7 @@ dependencies:
   post:
     # Copy Apache conf into `site-available`
     - sudo rm /etc/apache2/mods-enabled/php5.load
+    - sudo rm /etc/apache2/mods-enabled/php5.conf
     - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
     - sudo add-apt-repository ppa:ondrej/php -y 
     - sudo apt-get update
@@ -40,9 +41,6 @@ dependencies:
     - sudo a2ensite apache-ci.conf
     
     # Restart the Apache server
-    - sudo apt-get purge libapache2-mod-php5
-    - cd /etc/apache2/mods-enabled
-    - sudo rm php5.conf 
     - sudo service apache2 restart
 
 
