@@ -34,7 +34,7 @@ dependencies:
     - sudo apt-get update
     - sudo apt-get purge php5-common # remove and purge old PHP 5.x packages
     - sudo apt-get update # I had to run the update command again
-    - sudo apt-get install libapache2-mod-php5.6
+    - sudo apt-get install php7.0
     
     # Use `a2ensite` to create a symlink for the config
     - sudo a2ensite apache-ci.conf
@@ -45,14 +45,12 @@ dependencies:
     - sudo service apache2 restart
 
 
-    # - sudo apt-get install php5.6-curl
-    # - sudo apt-get install php5.6-gd
-    # - sudo apt-get install php5.6-intl
-    # - sudo apt-get install php5.6-zip
-    # - sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml -y
-    # - sudo apt-get install php5.6-xml -y
-    # - sudo apt-get install php-xml -y
-    # - sudo service apache2 restart
+    - sudo apt-get install php7.0-gd
+    - sudo apt-get install php7.0-intl
+    - sudo apt-get install php7.0-zip
+    - sudo apt-get install php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml -y
+    - sudo apt-get install php7.0-xml -y
+    - sudo service apache2 restart
     - cd ~/clean
     - sudo rm -rf /usr/local/bin/composer
     - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
