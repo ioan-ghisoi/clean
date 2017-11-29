@@ -46,13 +46,13 @@ dependencies:
     - sudo chmod -R 777 /var/www/html/magento2
     - sudo php /usr/local/bin/composer install
     - sudo php bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name wordpress --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
-    - - sudo chmod -R 777 /var/www/html/magento2
+    - sudo chmod -R 777 /var/www/html/magento2
 
 test:
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
     - npm run start
 
-  - store_artifacts:
-          path: ~/clean/reports/screenshots
-          destination: artifact-file
+  # - store_artifacts:
+  #         path: ~/clean/reports/screenshots
+  #         destination: artifact-file
