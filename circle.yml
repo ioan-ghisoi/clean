@@ -9,7 +9,6 @@ machine:
   # This will be added to the `/etc/hosts` file
   hosts:
     wppusher-plugin.dev: 127.0.0.1
-general:
   artifacts:
     - "~/clean/reports/screenshots" # relative to the user's home directory
 
