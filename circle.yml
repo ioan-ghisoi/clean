@@ -15,7 +15,10 @@ dependencies:
     - sudo add-apt-repository ppa:ondrej/php -y
     - sudo apt-get update
     - sudo apt-get install curl -y
-    - sudo apt-get install php5.6 -y 
+    - sudo apt-get install php5.6 -y
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - sudo dpkg -i google-chrome*.deb
+    - npm install -g npm
     
     # Use cURL to fetch WP-CLI
 
@@ -32,7 +35,6 @@ dependencies:
 test:
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
-    - sudo npm i -g npm
     - npm run start
     
     # Finally, run our Behat features
