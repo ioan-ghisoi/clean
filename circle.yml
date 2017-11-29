@@ -30,6 +30,11 @@ dependencies:
     # Copy Apache conf into `site-available`
     - sudo rm /etc/apache2/mods-enabled/php5.load
     - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
+    - sudo add-apt-repository ppa:ondrej/php
+    - sudo apt-get update
+    - sudo apt-get purge php5-common # remove and purge old PHP 5.x packages
+    - sudo apt-get update # I had to run the update command again
+    - sudo apt-get install libapache2-mod-php5.6
     
     # Use `a2ensite` to create a symlink for the config
     - sudo a2ensite apache-ci.conf
