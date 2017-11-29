@@ -40,7 +40,7 @@ dependencies:
     - sudo apt-get install php5.6-intl
     - sudo apt-get install php5.6-zip
     - sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml -y
-    - sudo apt-get install pgp5.6-xml -y
+    - sudo apt-get install php5.6-xml -y
     - sudo apt-get install php-xml -y
     - sudo service apache2 restart
     - cd ~/clean
