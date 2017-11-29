@@ -28,6 +28,7 @@ dependencies:
 
   post:
     # Copy Apache conf into `site-available`
+    - sudo rm /etc/apache2/mods-enabled/php5.load
     - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
     
     # Use `a2ensite` to create a symlink for the config
