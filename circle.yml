@@ -6,13 +6,13 @@ machine:
   timezone:
     Europe/Copenhagen
   store_artifacts:
-    path: ~/clean/reports/screenshots
+    path: /home/ubuntu/clean/reports/screenshots
     destination: artifact-file
 
 dependencies:
   pre:
     # Se up the DB and install npm and chrome
-    - mysql -u ubuntu -e "create database wordpress"
+    - mysql -u ubuntu -e "create database magento"
     - sudo add-apt-repository ppa:ondrej/php -y
     - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - sudo dpkg -i google-chrome*.deb
@@ -47,7 +47,7 @@ dependencies:
     # Install Magento
     - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.9 /var/www/html/magento2
     - sudo chmod -R 777 /var/www/html/magento2
-    - sudo php /var/www/html/magento2/bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name wordpress --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
+    - sudo php /var/www/html/magento2/bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name magento --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
     - sudo chmod -R 777 /var/www/html/magento2
 
 test:
