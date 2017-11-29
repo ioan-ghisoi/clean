@@ -6,12 +6,6 @@ machine:
   timezone:
     Europe/Copenhagen
 
-  # This will be added to the `/etc/hosts` file
-  hosts:
-    wppusher-plugin.dev: 127.0.0.1
-  artifacts:
-    - "~/clean/reports/screenshots" # relative to the user's home directory
-
 dependencies:
   pre:
     # Se up the DB and install npm and chrome
