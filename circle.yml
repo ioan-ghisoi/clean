@@ -6,8 +6,7 @@ machine:
   timezone:
     Europe/Copenhagen
   store_artifacts:
-    path: /home/ubuntu/clean/reports/screenshots
-    destination: artifact-file
+    path: "/home/ubuntu/clean/reports/screenshots"
 
 dependencies:
   pre:
