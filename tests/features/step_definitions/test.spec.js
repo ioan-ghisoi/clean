@@ -14,7 +14,7 @@ export default function () {
   });
   this.Given(/^I check google$/, () => {
     browser.pause(10000);
-    browser.url('http://127.0.0.1/magento2');
+    browser.url('http://127.0.0.1/magento2/admin');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
