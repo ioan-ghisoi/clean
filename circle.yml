@@ -53,7 +53,6 @@ test:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
     - npm run start
 
-  # - store_artifacts:
-  #         path: ~/clean/reports/screenshots
-  #         destination: artifact-file
-  
+  - store_artifacts:
+          path: ~/clean/reports/screenshots
+          destination: artifact-file
