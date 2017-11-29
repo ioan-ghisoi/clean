@@ -13,45 +13,45 @@ dependencies:
   pre:
     # Se up the DB and install npm and chrome
     - mysql -u ubuntu -e "create database wordpress"
-    - sudo add-apt-repository ppa:ondrej/php -y
-    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - sudo dpkg -i google-chrome*.deb
-    - npm install -g npm
-    - npm install
+    # - sudo add-apt-repository ppa:ondrej/php -y
+    # - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    # - sudo dpkg -i google-chrome*.deb
+    # - npm install -g npm
+    # - npm install
   post:
     # Config php and apache for Magento
-    - sudo rm /etc/apache2/mods-enabled/php5.load
-    - sudo rm /etc/apache2/mods-enabled/php5.conf
-    - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
-    - sudo add-apt-repository ppa:ondrej/php -y 
-    - sudo apt-get update
-    - sudo apt-get purge php5-common
-    - sudo apt-get update # I had to run the update command again
-    - sudo apt-get install php7.0
-    - sudo a2ensite apache-ci.conf
-    - sudo service apache2 restart
-    - sudo apt-get install php7.0-gd
-    - sudo apt-get install php7.0-curl
-    - sudo apt-get install php7.0-intl
-    - sudo apt-get install php7.0-zip
-    - sudo apt-get install php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml -y
-    - sudo apt-get install php7.0-xml -y
-    - sudo service apache2 restart
-    - cd ~/clean
-    # Make sure composer is using the correct PHP
-    - sudo rm -rf /usr/local/bin/composer
-    - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-    # Install Magento
-    - sudo php /usr/local/bin/composer init --no-interaction
-    - sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
-    - sudo mkdir /var/www/html/magento2
-    - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.9 /var/www/html/magento2
-    - sudo chmod -R 777 /var/www/html/magento2
-    - sudo php /usr/local/bin/composer install
-    - sudo php bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name wordpress --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
-    - sudo chmod -R 777 /var/www/html/magento2
+    # - sudo rm /etc/apache2/mods-enabled/php5.load
+    # - sudo rm /etc/apache2/mods-enabled/php5.conf
+    # - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
+    # - sudo add-apt-repository ppa:ondrej/php -y 
+    # - sudo apt-get update
+    # - sudo apt-get purge php5-common
+    # - sudo apt-get update # I had to run the update command again
+    # - sudo apt-get install php7.0
+    # - sudo a2ensite apache-ci.conf
+    # - sudo service apache2 restart
+    # - sudo apt-get install php7.0-gd
+    # - sudo apt-get install php7.0-curl
+    # - sudo apt-get install php7.0-intl
+    # - sudo apt-get install php7.0-zip
+    # - sudo apt-get install php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml -y
+    # - sudo apt-get install php7.0-xml -y
+    # - sudo service apache2 restart
+    # - cd ~/clean
+    # # Make sure composer is using the correct PHP
+    # - sudo rm -rf /usr/local/bin/composer
+    # - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+    # # Install Magento
+    # - sudo php /usr/local/bin/composer init --no-interaction
+    # - sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
+    # - sudo mkdir /var/www/html/magento2
+    # - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.9 /var/www/html/magento2
+    # - sudo chmod -R 777 /var/www/html/magento2
+    # - sudo php /usr/local/bin/composer install
+    # - sudo php bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name wordpress --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
+    # - sudo chmod -R 777 /var/www/html/magento2
 
 test:
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
-    - npm run start
+    # - npm run start
