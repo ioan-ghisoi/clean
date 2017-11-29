@@ -56,3 +56,4 @@ test:
   # - store_artifacts:
   #         path: ~/clean/reports/screenshots
   #         destination: artifact-file
+  
