@@ -5,7 +5,7 @@ machine:
     version: 7.0.20
   timezone:
     Europe/Copenhagen
-  store_artifacts:
+  artifacts:
     path: "/home/ubuntu/clean/reports/screenshots"
 
 dependencies:
