@@ -13,7 +13,7 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://wppusher-plugin.dev:8080');
+    browser.url('http://wppusher-plugin.dev');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
