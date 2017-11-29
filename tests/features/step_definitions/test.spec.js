@@ -13,7 +13,8 @@ export default function () {
     }, true);
   });
   this.Given(/^I check google$/, () => {
-    browser.url('http://wppusher-plugin.dev/magento2');
+    browser.pause(10000);
+    browser.url('http://localhost/magento2');
     console.log(browser.getUrl());
     console.log(browser.getSource());
     browser.waitUntil(function () {
