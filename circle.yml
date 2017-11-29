@@ -1,0 +1,36 @@
+machine:
+  timezone:
+    Europe/Copenhagen
+
+  php:
+    version: 5.6
+
+  # This will be added to the `/etc/hosts` file
+  hosts:
+    wppusher-plugin.dev: 127.0.0.1
+
+dependencies:
+  pre:
+    # No password is required for the MySQL user `ubuntu`
+    - mysql -u ubuntu -e "create database wordpress"
+    
+    # Use cURL to fetch WP-CLI
+
+  post:
+    # Copy Apache conf into `site-available`
+    - cp ~/wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
+    
+    # Use `a2ensite` to create a symlink for the config
+    - a2ensite apache-ci.conf
+    
+    # Restart the Apache server
+    - sudo service apache2 restart
+
+test:
+  override:
+    # This is just for us to see that the WP Pusher plugin was actually installed and is active
+    - sudo npm i -g npm
+    - npm run start
+    
+    # Finally, run our Behat features
+    # - vendor/bin/behat
