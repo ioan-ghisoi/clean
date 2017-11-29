@@ -1,6 +1,8 @@
 machine:
   node:
     version: 6
+  php:
+    version: 7.0.24
   timezone:
     Europe/Copenhagen
 
