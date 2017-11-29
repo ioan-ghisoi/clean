@@ -5,7 +5,6 @@ machine:
     version: 7.0.20
   timezone:
     Europe/Copenhagen
-  artifacts: "/home/ubuntu/clean/reports/screenshots"
 
 dependencies:
   pre:
@@ -49,6 +48,8 @@ dependencies:
     # - sudo chmod -R 777 /var/www/html/magento2
 
 test:
+  artifacts: 
+    - "/home/ubuntu/clean/reports/screenshots"
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
     # - npm run start
