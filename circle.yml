@@ -19,7 +19,8 @@ dependencies:
   post:
     # Config php and apache for Magento
     - sudo rm /etc/apache2/mods-enabled/php5.load && sudo rm /etc/apache2/mods-enabled/php5.conf
-    - sudo cp ~/clean/apache-ci.conf /etc/apache2/sites-available
+    - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
+    - sudo service apache2 restart
     - sudo apt-get purge php5-common
     - sudo apt-get update # I had to run the update command again
     - sudo apt-get install php7.0 php7.0-gd php7.0-curl php7.0-intl php7.0-zip php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml -y
@@ -34,13 +35,14 @@ dependencies:
     - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.9 /var/www/html/magento2
     - sudo chmod -R 777 /var/www/html/magento2
     - sudo php /var/www/html/magento2/bin/magento setup:install --admin-email "asdasd@gmail.com" --admin-firstname "ddddd" --admin-lastname "shrewd" --admin-password "12312njknjkRnd" --admin-user "jarvis" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name magento --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
-    - sudo chmod -R 777 /var/www/html/magento2
     - sudo php /var/www/html/magento2/bin/magento setup:static-content:deploy
     - sudo php /var/www/html/magento2/bin/magento indexer:reindex
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:di:compile
     - sudo a2enmod rewrite
-    - sudo cp /var/www/html/magento2/pub/.htaccess /var/www/html/magento2/
+    - mysql -u ubuntu -e "use magento; insert core_config_data (config_id, scope, scope_id, path, value) values (null, 'default', 0, 'dev/static/sign', 0);"
+    - sudo php /var/www/html/magento2/bin/magento cache:clean
+    - sudo chmod -R 777 /var/www/html/magento2
 
 test:
   artifacts: 
