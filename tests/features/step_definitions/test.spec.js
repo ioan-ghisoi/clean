@@ -30,7 +30,7 @@ export default function () {
     }
     browser.url(URL.magento_base + URL.admin_path); // avoid magento cache warning
     browser.waitUntil(function () {
-      return browser.isVisible(BACKEND.stores);
+      return browser.isVisible(BACKEND.stores + 'www');
     }, VAL.timeout_out, 'stores button should be visible');
     browser.click(BACKEND.stores);
     browser.waitUntil(function () {
