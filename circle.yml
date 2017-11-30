@@ -1,6 +1,6 @@
 general:
   artifacts:
-    - "/home/ubuntu/clean/reports/screenshots"
+    - "/home/ubuntu/clean/tests/reports/screenshots"
 machine:
   node:
     version: 6
@@ -46,8 +46,6 @@ dependencies:
     - sudo service apache2 restart
 
 test:
-  artifacts: 
-    - "/home/ubuntu/clean/reports/screenshots"
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
     # - npm run start
