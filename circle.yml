@@ -40,6 +40,7 @@ dependencies:
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:di:compile
     - sudo a2enmod rewrite
+    - sudo cp /var/www/html/magento2/pub/.htaccess /var/www/html/magento2/
 
 test:
   artifacts: 
