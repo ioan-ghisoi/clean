@@ -24,7 +24,7 @@ dependencies:
     - sudo apt-get purge php5-common
     - sudo apt-get update # I had to run the update command again
     - sudo apt-get install php7.0 php7.0-gd php7.0-curl php7.0-intl php7.0-zip php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml -y
-    - sudo a2ensite apache-ci.conf
+    # - sudo a2ensite apache-ci.conf
     - sudo service apache2 restart
     # Make sure composer is using the correct PHP
     - sudo rm -rf /usr/local/bin/composer
