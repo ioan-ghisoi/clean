@@ -128,7 +128,7 @@ export default {
   },
   value: {
     url: {
-      magento_base: 'http://151.80.61.232',
+      magento_base: 'http://127.0.0.1/magento2',
       admin_path: '/admin',
       catalog_path: '/admin/catalog/product/',
       payments_path: '/admin/admin/system_config/edit/section/payment/',
