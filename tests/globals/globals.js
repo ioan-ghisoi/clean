@@ -157,8 +157,8 @@ export default {
       phone: '07987654321',
     },
     admin: {
-      username: 'admin',
-      password: 'Checkout17',
+      username: 'checkout',
+      password: 'checkout',
       three_d_password: 'Checkout1!',
     },
     card: {
