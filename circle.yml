@@ -24,7 +24,7 @@ dependencies:
     - sudo apt-get purge php5-common
     - sudo apt-get update # I had to run the update command again
     - sudo apt-get install php7.0 php7.0-gd php7.0-curl php7.0-intl php7.0-zip php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml -y
-    # - sudo a2ensite apache-ci.conf
+    - sudo a2ensite 000-default.conf
     - sudo service apache2 restart
     # Make sure composer is using the correct PHP
     - sudo rm -rf /usr/local/bin/composer
@@ -43,6 +43,7 @@ dependencies:
     - mysql -u ubuntu -e "use magento; insert core_config_data (config_id, scope, scope_id, path, value) values (null, 'default', 0, 'dev/static/sign', 0);"
     - sudo php /var/www/html/magento2/bin/magento cache:clean
     - sudo chmod -R 777 /var/www/html/magento2
+    - sudo service apache2 restart
 
 test:
   artifacts: 
