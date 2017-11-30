@@ -5,7 +5,7 @@ machine:
   node:
     version: 6
   timezone:
-    Europe/Copenhagen
+    Europe/United Kingdom
 
 dependencies:
   pre:
