@@ -29,7 +29,7 @@ dependencies:
     # Make sure composer is using the correct PHP
     - sudo rm -rf /usr/local/bin/composer
     - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-    - sudo php /usr/local/bin/composer init --no-interaction && sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com e3fe1cabf752165bd79fbbbcb0e626fd 11543462ae0104c9792bd3d79b57663a
+    - sudo php /usr/local/bin/composer init --no-interaction && sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD}
     - sudo mkdir /var/www/html/magento2
     # Install Magento
     - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.9 /var/www/html/magento2
