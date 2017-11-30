@@ -158,7 +158,7 @@ export default {
     },
     admin: {
       username: 'checkout',
-      password: 'checkout',
+      password: 'CheckoutPlugin!8',
       three_d_password: 'Checkout1!',
     },
     card: {
