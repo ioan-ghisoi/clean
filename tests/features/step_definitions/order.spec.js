@@ -52,8 +52,11 @@ export default function () {
           return !browser.isVisible(FRONTEND.order.loader);
         }, VAL.timeout_out, 'the shipping methods should be updated');
         browser.waitUntil(function () {
-          return !browser.isVisible(FRONTEND.order.loader);
-        }, VAL.timeout_out, 'the customer data page should be loaded');
+          return !browser.isVisible(FRONTEND.order.checkout_page_loader);
+        }, VAL.timeout_out, 'the shipping methods should be updated');
+        browser.waitUntil(function () {
+          return browser.isVisible(FRONTEND.order.shipping_method);
+        }, VAL.timeout_out, 'the shipping methods should be ticked');
         browser.click(FRONTEND.order.go_to_payment);
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
@@ -122,15 +125,7 @@ export default function () {
   });
 
   this.Then(/^I logout from the registered customer account$/, () => {
-    browser.url(URL.magento_base);
-    browser.waitUntil(function () {
-      return browser.isVisible(FRONTEND.logged_in_name);
-    }, VAL.timeout_out, 'the logged in username shoud be visible');
-    browser.click(FRONTEND.logged_in_name);
-    browser.waitUntil(function () {
-      return browser.isVisible(FRONTEND.sign_out);
-    }, VAL.timeout_out, 'the sign out button shoud be visible');
-    browser.click(FRONTEND.sign_out);
+    browser.url(URL.magento_base + URL.sign_out_path);
   });
 
   this.Given(/^I login the registered customer account$/, () => {

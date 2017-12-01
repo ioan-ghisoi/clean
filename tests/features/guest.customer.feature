@@ -19,6 +19,7 @@ Scenario: I should be able to complete a stage1
       Given I enable autocapture
       Given I save the backend settings
       Then I complete the order flow as a unregistered customer until the payment stage
+      Then I choose Checkout as a payment option
 
 
 Scenario: I should be able to complete a stage1
@@ -37,4 +38,5 @@ Scenario: I should be able to complete a stage1
       Given I save the backend settings
       Given I login the registered customer account
       Then I complete the order flow as a registered customer until the payment stage
+      Then I choose Checkout as a payment option
       Then I logout from the registered customer account

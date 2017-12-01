@@ -149,6 +149,7 @@ export default {
       payments_path: '/admin/admin/system_config/edit/section/payment/',
       product_path: '/fusion-backpack.html',
       sign_in_path: '/customer/account/login/',
+      sign_out_path: '/customer/account/logout/',
       sign_up_path: '/customer/account/create/',
       orders_path: '/admin/sales/order/',
       invoices_path: '/admin/sales/invoice/',
@@ -174,8 +175,8 @@ export default {
       password: 'Checkout17',
     },
     admin: {
-      username: 'checkout',
-      password: 'CheckoutPlugin!8',
+      username: 'admin',
+      password: 'Checkout17',
       three_d_password: 'Checkout1!',
       secret_key: 'sk_test_404618d6-50b6-45d2-a151-51682378b266',
       public_key: 'pk_test_ba03a6e6-d55c-43c9-8d7e-ee6a9c9bcdc3',
