@@ -85,7 +85,7 @@ export default {
           hosted_alt_payments: '#modal-wrapper > div.cko-md-content > div > div.container-body > div.content-control.tabs.split-view > div.tab.lp.fragment-2.enter',
         },
         advanced_category: {
-          category_selector: '#payment_us_checkout_com_checkout_com_advanced_settings-head',
+          selector: '#payment_us_checkout_com_checkout_com_advanced_settings-head',
           cvv_vetification: '#payment_us_checkout_com_checkout_com_advanced_settings_useccv',
           vault: '#payment_us_checkout_com_checkout_com_advanced_settings_checkout_com_cc_vault_active',
           save_cards_authomatically: '#payment_us_checkout_com_checkout_com_advanced_settings_checkout_com_cc_vault_autosave',
@@ -96,7 +96,7 @@ export default {
           autocap_time: '#payment_us_checkout_com_checkout_com_advanced_settings_auto_capture_time',
         },
         order_category: {
-          category_selector: '#payment_us_checkout_com_checkout_com_order_settings-head',
+          selector: '#payment_us_checkout_com_checkout_com_order_settings-head',
           order_creation: '#payment_us_checkout_com_checkout_com_order_settings_order_creation',
           order_comments: '#payment_us_checkout_com_checkout_com_order_settings_order_comments_override',
           new_order_status: '#payment_us_checkout_com_checkout_com_order_settings_new_order_status',
@@ -107,7 +107,7 @@ export default {
           auto_generated_invoice: '#payment_us_checkout_com_checkout_com_order_settings_auto_generate_invoice',
         },
         keys_category: {
-          category_selector: '#payment_us_checkout_com_checkout_com_account_keys-head',
+          selector: '#payment_us_checkout_com_checkout_com_account_keys-head',
           public: '#payment_us_checkout_com_checkout_com_account_keys_public_key',
           secret: '#payment_us_checkout_com_checkout_com_account_keys_secret_key',
           private_shared: '#payment_us_checkout_com_checkout_com_account_keys_private_shared_key',
@@ -160,6 +160,9 @@ export default {
       username: 'checkout',
       password: 'CheckoutPlugin!8',
       three_d_password: 'Checkout1!',
+      secret_key: 'sk_test_404618d6-50b6-45d2-a151-51682378b266',
+      public_key: 'pk_test_ba03a6e6-d55c-43c9-8d7e-ee6a9c9bcdc3',
+      private_shared_key: '130941e0-7403-4738-bb5e-45362cd948bd',
     },
     card: {
       visa: {
@@ -201,7 +204,7 @@ export default {
     },
     timeout_out: 15000,
     resolution_w: 1920,
-    resolution_h: 1080,
+    resolution_h: 3000,
     title: 'Test',
     sort_order: 0,
     new_order_status: 'complete',
