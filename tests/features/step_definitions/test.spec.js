@@ -92,4 +92,51 @@ export default function () {
   this.Given(/^I save the backend settings$/, () => {
     browser.click(BACKEND.plugin.save);
   });
+
+  this.Given(/^I set the integration type to (.*)$/, (integration) => {
+    switch (integration) {
+      case 'embedded':
+        browser.selectByValue(BACKEND.plugin.basic_category.integration, 'embedded');
+        break;
+      case 'hosted':
+        browser.selectByValue(BACKEND.plugin.basic_category.integration, 'hosted');
+        break;
+      default:
+        browser.selectByValue(BACKEND.plugin.basic_category.integration, 'embedded');
+        break;
+    }
+  });
+
+  this.Given(/^I set the payment option title$/, () => {
+    browser.setValue(BACKEND.plugin.basic_category.title, VAL.title);
+  });
+
+  this.Given(/^I set the payment option order$/, () => {
+    browser.setValue(BACKEND.plugin.basic_category.sort_order, VAL.sort_order);
+  });
+
+  this.Given(/^I set the payment option order$/, () => {
+    browser.setValue(BACKEND.plugin.basic_category.sort_order, VAL.sort_order);
+  });
+
+  this.Given(/^I set the payment mode to (.*)$/, (mode) => {
+    switch (mode) {
+      case 'cards':
+        browser.selectByValue(BACKEND.plugin.basic_category.hosted_payment_mode, 'cards');
+        break;
+      case 'local payments':
+        browser.selectByValue(BACKEND.plugin.basic_category.hosted_payment_mode, 'localpayments');
+        break;
+      case 'mixed':
+        browser.selectByValue(BACKEND.plugin.basic_category.hosted_payment_mode, 'mixed');
+        break;
+      default:
+        browser.selectByValue(BACKEND.plugin.basic_category.hosted_payment_mode, 'cards');
+        break;
+    }
+  });
+
+  this.Given(/^I set the theme color$/, () => {
+    browser.setValue(BACKEND.plugin.basic_category.hosted_theme_color, VAL.theme_color);
+  });
 }

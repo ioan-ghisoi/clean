@@ -8,4 +8,8 @@ Scenario: I should be able to complete a normal transaction as a new customer wi
       Given I disable the url secret key encryption
       Given I go to the backend of Checkout's plugin
       Given I set the sandbox keys
+      Given I set the integration type to embedded
+      Given I set the payment option title
+      Given I set the payment mode to cards
+      Given I set the theme color
       Given I save the backend settings
