@@ -12,4 +12,9 @@ Scenario: I should be able to complete a normal transaction as a new customer wi
       Given I set the payment option title
       Given I set the payment mode to cards
       Given I set the theme color
+      Given I set the button label
+      Given I enable Vault
+      Given I set Vault title
+      Given I enable 3D Secure
+      Given I enable autocapture
       Given I save the backend settings

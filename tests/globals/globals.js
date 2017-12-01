@@ -206,6 +206,7 @@ export default {
     resolution_w: 1920,
     resolution_h: 3000,
     title: 'Test',
+    vaut_title: 'Test Vult',
     sort_order: 0,
     new_order_status: 'complete',
     theme_color: '#eaeaea',

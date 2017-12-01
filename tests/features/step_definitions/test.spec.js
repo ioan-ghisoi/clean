@@ -139,4 +139,54 @@ export default function () {
   this.Given(/^I set the theme color$/, () => {
     browser.setValue(BACKEND.plugin.basic_category.hosted_theme_color, VAL.theme_color);
   });
+
+  this.Given(/^I set the button label$/, () => {
+    browser.setValue(BACKEND.plugin.basic_category.hosted_button_label, VAL.button_label);
+  });
+
+  this.Given(/^I (.*) Vault$/, (option) => {
+    switch (option) {
+      case 'enable':
+        browser.selectByValue(BACKEND.plugin.advanced_category.vault, '1');
+        break;
+      case 'disable':
+        browser.selectByValue(BACKEND.plugin.advanced_category.vault, '0');
+        break;
+      default:
+        browser.selectByValue(BACKEND.plugin.advanced_category.vault, '0');
+        break;
+    }
+  });
+
+  this.Given(/^I set Vault title$/, () => {
+    browser.setValue(BACKEND.plugin.advanced_category.vaut_title, VAL.vaut_title);
+  });
+
+  this.Given(/^I (.*) 3D Secure$/, (option) => {
+    switch (option) {
+      case 'enable':
+        browser.selectByValue(BACKEND.plugin.advanced_category.three_d, '1');
+        break;
+      case 'disable':
+        browser.selectByValue(BACKEND.plugin.advanced_category.three_d, '0');
+        break;
+      default:
+        browser.selectByValue(BACKEND.plugin.advanced_category.three_d, '0');
+        break;
+    }
+  });
+
+  this.Given(/^I (.*) autocapture$/, (option) => {
+    switch (option) {
+      case 'enable':
+        browser.selectByValue(BACKEND.plugin.advanced_category.autocapture, '1');
+        break;
+      case 'disable':
+        browser.selectByValue(BACKEND.plugin.advanced_category.autocapture, '0');
+        break;
+      default:
+        browser.selectByValue(BACKEND.plugin.advanced_category.autocapture, '0');
+        break;
+    }
+  });
 }
