@@ -116,6 +116,7 @@ export default function () {
       default:
         break;
     }
+    browser.pause(10000);
     browser.waitUntil(function () {
       return browser.isEnabled('asdas');
     }, VAL.timeout_out, 'should fail');
