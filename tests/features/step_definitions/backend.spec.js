@@ -55,14 +55,13 @@ export default function () {
   });
 
   this.Given(/^I go to the backend of Checkout's plugin$/, () => {
-    browser.url(URL.magento_base);
+    browser.url(URL.magento_base + URL.payments_path);
     if (browser.isVisible(BACKEND.admin_username)) {
       browser.setValue(BACKEND.admin_username, VAL.admin.username);
       browser.setValue(BACKEND.admin_password, VAL.admin.password);
       browser.click(BACKEND.admin_sign_in);
       browser.url(URL.magento_base + URL.payments_path); // avoid magento cache popup
     }
-    browser.url(URL.magento_base + URL.payments_path);
     if (!browser.isVisible(BACKEND.plugin.selector)) {
       browser.click(BACKEND.other_payments);
     }
