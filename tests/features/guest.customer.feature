@@ -9,6 +9,7 @@ Scenario: I should be able to complete a stage1
       Given I go to the backend of Checkout's plugin
       Given I set the sandbox keys
       Given I enable 3D Secure
+      Given I set the integration type to frames
       Given I save the backend settings
       Then I complete the order flow as a unregistered customer until the payment stage
       Then I choose Checkout as a payment option
