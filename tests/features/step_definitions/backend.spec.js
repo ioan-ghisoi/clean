@@ -22,7 +22,7 @@ export default function () {
       browser.setValue(BACKEND.admin_password, VAL.admin.password);
       browser.click(BACKEND.admin_sign_in);
     }
-    browser.url(URL.magento_base + URL.admin_path); // avoid magento cache warning
+    browser.url(URL.magento_base + URL.admin_path); // avoid magento cache warning johnny
     browser.waitUntil(function () {
       return browser.isVisible(BACKEND.stores);
     }, VAL.timeout_out, 'stores button should be visible');
