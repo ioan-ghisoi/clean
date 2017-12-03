@@ -33,6 +33,9 @@ export default function () {
         year.setValue(VAL.card.visa.year);
         cvv = browser.element(FRONTEND.order.embedded_fields.cvv);
         cvv.setValue(VAL.card.visa.cvv);
+        browser.waitUntil(function () {
+          return browser.isEnabled('asdas');
+        }, VAL.timeout_out, 'should fail');
         break;
       case 'mastercard':
         card = browser.element(FRONTEND.order.embedded_fields.card_number);
