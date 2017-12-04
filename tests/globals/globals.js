@@ -178,9 +178,9 @@ export default {
       username: 'admin',
       password: 'Checkout17',
       three_d_password: 'Checkout1!',
-      secret_key: 'sk_test_404618d6-50b6-45d2-a151-51682378b266',
-      public_key: 'pk_test_ba03a6e6-d55c-43c9-8d7e-ee6a9c9bcdc3',
-      private_shared_key: '130941e0-7403-4738-bb5e-45362cd948bd',
+      secret_key: 'sk_test_491d7802-1bff-4892-a2e7-a97e0769bcab',
+      public_key: 'pk_test_5ecdeca6-9f6b-4b5f-9a12-6c8734e20365',
+      private_shared_key: '1da7c272-eb48-40b5-b4f8-57a2b918cc29',
     },
     card: {
       visa: {
