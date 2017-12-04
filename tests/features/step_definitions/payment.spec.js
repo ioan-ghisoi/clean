@@ -116,9 +116,19 @@ export default function () {
       default:
         break;
     }
-    browser.pause(10000);
+  });
+
+  this.Then(/^I complete three D secure password$/, () => {
     browser.waitUntil(function () {
-      return browser.isEnabled('asdas');
-    }, VAL.timeout_out, 'should fail');
+      return browser.isVisible(FRONTEND.order.three_d_password);
+    }, VAL.timeout_out, '3D password  should be enabled');
+    browser.setValue(FRONTEND.order.three_d_password, VAL.admin.three_d_password);
+    browser.click(FRONTEND.order.three_d_submit);
+  });
+
+  this.Then(/^I Should see the success page$/, () => {
+    browser.waitUntil(function () {
+      return browser.isVisible(FRONTEND.order.checkout_success_message);
+    }, VAL.timeout_out, 'success message should be visible');
   });
 }
