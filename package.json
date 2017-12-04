@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
       "lint": "./node_modules/.bin/eslint **/**.js",
-      "start": "./node_modules/.bin/chimp /tests/config/chimp.js",
+      "start": "./node_modules/.bin/chimp ./tests/config/chimp.js",
       "test": "chimp"
     },
     "keywords": [],
