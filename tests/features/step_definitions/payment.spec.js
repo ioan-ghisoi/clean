@@ -127,6 +127,7 @@ export default function () {
   });
 
   this.Then(/^I Should see the success page$/, () => {
+    browser.pause(20000);
     browser.waitUntil(function () {
       return browser.isVisible(FRONTEND.order.checkout_success_message);
     }, VAL.timeout_out, 'success message should be visible');
