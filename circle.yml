@@ -19,7 +19,7 @@ dependencies:
   post:
     # Config php and apache for Magento
     - sudo rm /etc/apache2/mods-enabled/php5.load && sudo rm /etc/apache2/mods-enabled/php5.conf
-    - sudo cp ~/clean/000-default.conf /etc/apache2/sites-available
+    - sudo cp ~/clean/tests/config/000-default.conf /etc/apache2/sites-available
     - sudo service apache2 restart
     - sudo apt-get purge php5-common
     - sudo apt-get update # I had to run the update command again
@@ -40,7 +40,7 @@ dependencies:
     - cd /var/www/html/magento2 && sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD} && sudo sudo php /usr/local/bin/composer require checkoutcom/magento2:*
     - sudo php /var/www/html/magento2/bin/magento setup:static-content:deploy
     - sudo php /var/www/html/magento2/bin/magento module:enable CheckoutCom_Magento2
-    - sudo cp /clean/embedded.js /vendor/checkoutcom/magento2/view/frontend/web/js/view/payment/method-renderer/
+    - sudo cp ~/clean/tests/config/embedded.js /vendor/checkoutcom/magento2/view/frontend/web/js/view/payment/method-renderer/
     - sudo php /var/www/html/magento2/bin/magento indexer:reindex
     - sudo php /var/www/html/magento2/bin/magento sampledata:deploy
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
