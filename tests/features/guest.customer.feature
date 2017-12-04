@@ -15,3 +15,5 @@ Scenario: I should be able to complete a stage1
       Then I choose Checkout as a payment option
       Then I complete Checkout Frames with a visa card
       Then I submit the order for the frames integration
+      Then I complete three D secure password
+      Then I Should see the success page
