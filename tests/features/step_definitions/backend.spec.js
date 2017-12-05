@@ -114,10 +114,6 @@ export default function () {
     browser.setValue(BACKEND.plugin.basic_category.sort_order, VAL.sort_order);
   });
 
-  this.Given(/^I set the payment option order$/, () => {
-    browser.setValue(BACKEND.plugin.basic_category.sort_order, VAL.sort_order);
-  });
-
   this.Given(/^I set the payment mode to (.*)$/, (mode) => {
     switch (mode) {
       case 'cards':

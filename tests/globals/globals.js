@@ -5,6 +5,7 @@ export default {
     frontend: {
       order: {
         loader: '.loading-mask',
+        ajax_loader: 'ajax-loading',
         add_product: '#product-addtocart-button',
         product_counter: 'span.counter:nth-child(2)',
         cart: '.showcart',
@@ -65,7 +66,9 @@ export default {
         pay_button: '.form-submit',
         hosted_header: '#modal-wrapper > div.cko-md-content > div > div.header',
         hosted_pay_button: '#modal-wrapper > div.cko-md-content > div > div.container-body > div.content.card > form > input',
-        hosted_alt_payments: '#modal-wrapper > div.cko-md-content > div > div.container-body > div.content-control.tabs.split-view > div.tab.lp.fragment-2.enter',
+        hosted_alt_payments_tab: '#modal-wrapper > div.cko-md-content > div > div.container-body > div.content-control.tabs.split-view > div.tab.lp.fragment-2.enter',
+        hosted_card_tab: '#modal-wrapper > div.cko-md-content > div > div.container-body > div.content-control.tabs.split-view > div.tab.active.card',
+        hosted_region_selector: '#modal-wrapper > div.cko-md-content > div > div.container-body > div.content-control.region-selector',
       },
       sign_in_email: 'div.email:nth-child(2) > div:nth-child(2) > input:nth-child(1)',
       sign_in_password: 'div.field:nth-child(3) > div:nth-child(2) > input:nth-child(1)',
@@ -178,9 +181,9 @@ export default {
       username: 'admin',
       password: 'Checkout17',
       three_d_password: 'Checkout1!',
-      secret_key: 'sk_test_491d7802-1bff-4892-a2e7-a97e0769bcab',
-      public_key: 'pk_test_5ecdeca6-9f6b-4b5f-9a12-6c8734e20365',
-      private_shared_key: '1da7c272-eb48-40b5-b4f8-57a2b918cc29',
+      secret_key: 'sk_test_71db898e-8bd2-4986-b05d-1dcd57ab63de',
+      public_key: 'pk_test_a8886e9e-6a7f-485a-966c-271e072d4856',
+      private_shared_key: 'a7461b1d-5844-4154-b689-f819c27d9624',
     },
     card: {
       visa: {
@@ -220,7 +223,7 @@ export default {
         cvv: '100',
       },
     },
-    timeout_out: 15000,
+    timeout_out: 35000,
     resolution_w: 1920,
     resolution_h: 3000,
     title: 'Test',

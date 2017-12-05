@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
       "lint": "./node_modules/.bin/eslint **/**.js",
-      "start": "./node_modules/.bin/chimp ./tests/config/chimp.js",
-      "test": "chimp"
+      "test": "./node_modules/.bin/chimp ./tests/config/chimp.js",
+      "watch": "./node_modules/.bin/chimp ./tests/config/chimp.js --watch"
     },
     "keywords": [],
     "author": "“Johnny <“ionutghisoi95@gmail.com”>",

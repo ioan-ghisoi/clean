@@ -10,7 +10,9 @@ export default function () {
     switch (customer) {
       case 'unregistered':
         browser.url(URL.magento_base + URL.product_path);
-        browser.pause(5000);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'the product should be loaded');
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
         }, VAL.timeout_out, 'the product page to be loaded');
@@ -22,7 +24,9 @@ export default function () {
         browser.waitUntil(function () {
           return browser.isVisible(FRONTEND.order.go_to_checkout);
         }, VAL.timeout_out, 'the go to checkout button should be visible');
-        browser.pause(1000); // avoid magento errors
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'the shopping basket should be updated with the product');
         browser.click(FRONTEND.order.go_to_checkout);
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.checkout_page_loader);
@@ -78,7 +82,9 @@ export default function () {
         browser.waitUntil(function () {
           return browser.isVisible(FRONTEND.order.go_to_checkout);
         }, VAL.timeout_out, 'the go to checkout button should be visible');
-        browser.pause(1000); // avoid magento errors
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'the order details should be updated before checkout');
         browser.click(FRONTEND.order.go_to_checkout);
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
@@ -132,12 +138,52 @@ export default function () {
     browser.url(URL.magento_base + URL.sign_in_path);
     browser.waitUntil(function () {
       return browser.isVisible(FRONTEND.sign_in_email);
-    }, VAL.timeout_out, 'email field shoud be visible');
+    }, VAL.timeout_out, 'email field should be visible');
     browser.setValue(FRONTEND.sign_in_email, VAL.customer.email);
     browser.setValue(FRONTEND.sign_in_password, VAL.customer.password);
     browser.waitUntil(function () {
       return browser.isEnabled(FRONTEND.sign_in_button);
     }, VAL.timeout_out, 'sign in button should be enabled');
     browser.click(FRONTEND.sign_in_button);
+  });
+
+  this.Then(/^I should see the plugin title$/, () => {
+    browser.waitUntil(function () {
+      return browser.getText(FRONTEND.checkout_option_title) === VAL.title;
+    }, VAL.timeout_out, 'Checkout plugin title should be set and visible');
+  });
+
+  this.Then(/^I should see the (.*) tab$/, (option) => {
+    switch (option) {
+      case 'alternative payments':
+        browser.waitUntil(function () {
+          return browser.isVisible(FRONTEND.hosted.hosted_alt_payments_tab);
+        }, VAL.timeout_out, 'Checkout plugin title should be set and visible');
+        break;
+      case 'card':
+        browser.waitUntil(function () {
+          return browser.isVisible(FRONTEND.hosted.hosted_card_tab);
+        }, VAL.timeout_out, 'Checkout plugin title should be set and visible');
+        break;
+      default:
+        break;
+    }
+  });
+
+  this.Then(/^I should see the just the (.*) options$/, (option) => {
+    switch (option) {
+      case 'alternative payments':
+        browser.waitUntil(function () {
+          return browser.isVisible(FRONTEND.hosted.hosted_region_selector);
+        }, VAL.timeout_out, 'Alternative payments should be loaded');
+        break;
+      case 'card':
+        browser.waitUntil(function () {
+          return !browser.isVisible(FRONTEND.hosted.hosted_region_selector);
+        }, VAL.timeout_out, 'Alternative payments should not be visible');
+        break;
+      default:
+        break;
+    }
   });
 }
