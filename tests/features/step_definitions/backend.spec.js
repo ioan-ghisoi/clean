@@ -92,7 +92,7 @@ export default function () {
 
   this.Given(/^I set the integration type to (.*)$/, (integration) => {
     switch (integration) {
-      case 'embedded':
+      case 'frames':
         browser.selectByValue(BACKEND.plugin.basic_category.integration, 'embedded');
         break;
       case 'hosted':
