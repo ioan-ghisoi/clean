@@ -8,6 +8,8 @@ machine:
     Europe/London
 
 dependencies:
+  override:
+    - echo "Ignore CircleCI defaults"
   pre:
     - mysql -u ubuntu -e "create database magento"
     - sudo add-apt-repository ppa:ondrej/php -y
