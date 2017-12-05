@@ -18,6 +18,13 @@ export default function () {
         }, VAL.timeout_out, 'the product page to be loaded');
         browser.click(FRONTEND.order.add_product);
         browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'the product should be loaded');
+        browser.waitUntil(function () {
+          return !browser.isVisible(FRONTEND.order.loader);
+        }, VAL.timeout_out, 'the product page to be loaded');
+        browser.click(FRONTEND.order.add_product);
+        browser.waitUntil(function () {
           return browser.isVisible(FRONTEND.order.product_counter);
         }, VAL.timeout_out, 'the basket products counter to be visible');
         browser.click(FRONTEND.order.cart);
@@ -71,6 +78,13 @@ export default function () {
         break;
       case 'registered':
         browser.url(URL.magento_base + URL.product_path);
+        browser.waitUntil(function () {
+          return !browser.isVisible(FRONTEND.order.loader);
+        }, VAL.timeout_out, 'the product page to be loaded');
+        browser.click(FRONTEND.order.add_product);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'the product should be loaded');
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
         }, VAL.timeout_out, 'the product page to be loaded');
@@ -137,14 +151,19 @@ export default function () {
   this.Given(/^I login the registered customer account$/, () => {
     browser.url(URL.magento_base + URL.sign_in_path);
     browser.waitUntil(function () {
-      return browser.isVisible(FRONTEND.sign_in_email);
-    }, VAL.timeout_out, 'email field should be visible');
-    browser.setValue(FRONTEND.sign_in_email, VAL.customer.email);
-    browser.setValue(FRONTEND.sign_in_password, VAL.customer.password);
-    browser.waitUntil(function () {
-      return browser.isEnabled(FRONTEND.sign_in_button);
-    }, VAL.timeout_out, 'sign in button should be enabled');
-    browser.click(FRONTEND.sign_in_button);
+      return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+    }, VAL.timeout_out, 'page should be loaded');
+    if (browser.isVisible(FRONTEND.sign_in_email)) { // Only sign in if you are not signed in yet
+      browser.setValue(FRONTEND.sign_in_email, VAL.customer.email);
+      browser.setValue(FRONTEND.sign_in_password, VAL.customer.password);
+      browser.waitUntil(function () {
+        return browser.isEnabled(FRONTEND.sign_in_button);
+      }, VAL.timeout_out, 'sign in button should be enabled');
+      browser.click(FRONTEND.sign_in_button);
+      browser.waitUntil(function () {
+        return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+      }, VAL.timeout_out, 'the product should be loaded');
+    }
   });
 
   this.Then(/^I should see the plugin title$/, () => {
@@ -185,5 +204,14 @@ export default function () {
       default:
         break;
     }
+  });
+
+  this.Then(/^I should see a customised hosted page$/, () => {
+    browser.waitUntil(function () {
+      return browser.getCssProperty(FRONTEND.hosted.hosted_header, 'background-color').parsed.hex === VAL.theme_color;
+    }, VAL.timeout_out, 'Theme color should be set');
+    browser.waitUntil(function () {
+      return browser.getValue(FRONTEND.hosted.hosted_pay_button) === VAL.button_label;
+    }, VAL.timeout_out, 'Button label should be set');
   });
 }

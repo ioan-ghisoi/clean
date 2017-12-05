@@ -14,8 +14,6 @@ export default function () {
   });
 
   this.Given(/^I disable the url secret key encryption$/, () => {
-    const size = browser.getViewportSize();
-    console.log(size);
     browser.url(URL.magento_base + URL.admin_path);
     if (browser.isVisible(BACKEND.admin_username)) {
       browser.setValue(BACKEND.admin_username, VAL.admin.username);
