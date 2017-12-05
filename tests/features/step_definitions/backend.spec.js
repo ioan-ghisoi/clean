@@ -99,7 +99,7 @@ export default function () {
         browser.selectByValue(BACKEND.plugin.basic_category.integration, 'hosted');
         break;
       default:
-        browser.selectByValue(BACKEND.plugin.basic_category.integration, 'embedded');
+        browser.selectByValue(BACKEND.plugin.basic_category.integration, 'hosted');
         break;
     }
   });
