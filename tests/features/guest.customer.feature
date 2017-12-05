@@ -47,9 +47,10 @@ Scenario: I should be able to complete a non-3D transaction using Hosted integra
       Then I complete Checkout Hosted with a visa card
       Then I should see the success page
 
-Scenario: I should be able to set the Checkout plugin paymet option title
+Scenario: I should be able to set the Checkout plugin paymet option title as the first payment option
       Given I go to the backend of Checkout's plugin
       Given I set the payment option title
+      Given I set the payment option order
       Given I save the backend settings
       Then I complete the order flow as a unregistered customer until the payment stage
       Then I should see the plugin title
