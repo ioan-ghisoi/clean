@@ -1,14 +1,14 @@
 
 module.exports = {
-  path: './tests/features',
-  screenshotsPath: './tests/reports/screenshots',
+  path: './features',
+  screenshotsPath: './reports/screenshots',
   screenshotsOnError: true,
   saveScreenshotsToDisk: true,
   saveScreenshotsToReport: true,
   timeout: 60000,
   webdriverio: {
     logLevel: 'silent',
-    screenshotPath: './tests/reports/screenshots',
+    screenshotPath: './reports/screenshots',
     desiredCapabilities: {
       chromeOptions: {
         args: ['headless', 'disable-gpu'],
