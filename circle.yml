@@ -30,7 +30,7 @@ dependencies:
     - sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
     - sudo php /usr/local/bin/composer init --no-interaction && sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD}
     - sudo mkdir /var/www/html/magento2
-    - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.9 /var/www/html/magento2
+    - sudo php /usr/local/bin/composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.1.7 /var/www/html/magento2
     - sudo chmod -R 777 /var/www/html/magento2
     - sudo php /var/www/html/magento2/bin/magento setup:install --admin-email "checkout@plugin.com" --admin-firstname "checkout" --admin-lastname "plugin" --admin-password "Checkout17" --admin-user "admin" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name magento --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
@@ -41,6 +41,7 @@ dependencies:
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:static-content:deploy
     - sudo php /var/www/html/magento2/bin/magento indexer:reindex
+    - sudo php /usr/local/bin/composer init --no-interaction && sudo php /usr/local/bin/composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD}
     - sudo php /var/www/html/magento2/bin/magento sampledata:deploy
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:di:compile
