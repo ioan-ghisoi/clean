@@ -55,5 +55,5 @@ dependencies:
 test:
   override:
     # This is just for us to see that the WP Pusher plugin was actually installed and is active
-    - ~/clean/tests
+    - cd ~/clean/tests
     - npm test
