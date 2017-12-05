@@ -30,8 +30,8 @@ Scenario: I should be able to complete a non-3D transaction using Frames integra
 
 Scenario: I should be able to complete a 3D transaction using Hosted integration
       Given I go to the backend of Checkout's plugin
-      Given I enable 3D Secure
       Given I set the integration type to hosted
+      Given I enable 3D Secure
       Given I save the backend settings
       Given I login the registered customer account
       Then I complete the order flow as a registered customer until the payment stage
