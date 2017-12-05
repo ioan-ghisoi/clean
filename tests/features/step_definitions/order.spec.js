@@ -56,6 +56,7 @@ export default function () {
         browser.setValue(FRONTEND.order.customer_lastname, VAL.guest.lastname);
         browser.setValue(FRONTEND.order.customer_street, VAL.guest.address);
         browser.selectByValue(FRONTEND.order.customer_country, VAL.guest.country);
+        browser.pause(2000); // Avoid Magento error
         browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
         browser.setValue(FRONTEND.order.customer_postcode, VAL.guest.postcode);
         browser.setValue(FRONTEND.order.customer_phone, VAL.guest.phone);
