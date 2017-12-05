@@ -35,15 +35,16 @@ dependencies:
     - sudo php /var/www/html/magento2/bin/magento setup:install --admin-email "checkout@plugin.com" --admin-firstname "checkout" --admin-lastname "plugin" --admin-password "Checkout17" --admin-user "admin" --backend-frontname admin --base-url "http://127.0.0.1/magento2" --db-host 127.0.0.1 --db-name magento --db-user ubuntu --session-save files --use-rewrites 1 --use-secure 0 -vvv
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:di:compile
-    - cd /var/www/html/magento2/app && sudo mkdir code && cd code && sudo mkdir CheckoutCom && cd CheckoutCom && sudo mkdir Magento2 && sudo cp -R ~/clean Magento2/
+    - cd /var/www/html/magento2/app && sudo mkdir code && cd code && sudo mkdir CheckoutCom && cd CheckoutCom && sudo mkdir Magento2 && sudo cp -R ~/clean/* Magento2/
+    - sudo chmod -R 777 /var/www/html/magento2
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:static-content:deploy
-    - sudo php /var/www/html/magento2/bin/magento module:enable CheckoutCom_Magento2
-    - sudo cp ~/clean/tests/config/embedded.js /var/www/html/magento2/vendor/checkoutcom/magento2/view/frontend/web/js/view/payment/method-renderer/
+    - sudo cp ~/clean/tests/config/embedded.js /var/www/html/magento2/app/code/CheckoutCom/Magento2/view/frontend/web/js/view/payment/method-renderer/
     - sudo php /var/www/html/magento2/bin/magento indexer:reindex
     - sudo php /var/www/html/magento2/bin/magento sampledata:deploy
     - sudo php /var/www/html/magento2/bin/magento setup:upgrade
     - sudo php /var/www/html/magento2/bin/magento setup:di:compile
+    - sudo php /var/www/html/magento2/bin/magento module:enable CheckoutCom_Magento2
     - sudo php /var/www/html/magento2/bin/magento cache:clean
     - sudo a2enmod rewrite
     - mysql -u ubuntu -e "use magento; insert core_config_data (config_id, scope, scope_id, path, value) values (null, 'default', 0, 'dev/static/sign', 0);"
