@@ -54,40 +54,43 @@ export default function () {
         browser.waitUntil(function () {
           return !browser.getAttribute(FRONTEND.order.email_fieldset, 'class').includes(VAL.fieldset_block);
         }, VAL.timeout_out, 'the email check should be completed');
-        browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.setValue(FRONTEND.order.customer_lastname, VAL.guest.lastname);
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.setValue(FRONTEND.order.customer_street, VAL.guest.address);
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.selectByValue(FRONTEND.order.customer_country, VAL.guest.country);
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        try {
-          browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
-        } catch (er) {
-          browser.pause(10000); // avoid magento error
-          browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+
+        if (!browser.getValue(FRONTEND.order.customer_firstname) === VAL.guest.name && !browser.getValue(FRONTEND.order.customer_phone) === VAL.guest.phone) {
+          browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.setValue(FRONTEND.order.customer_lastname, VAL.guest.lastname);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.setValue(FRONTEND.order.customer_street, VAL.guest.address);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.selectByValue(FRONTEND.order.customer_country, VAL.guest.country);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          try {
+            browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+          } catch (er) {
+            browser.pause(10000); // avoid magento error
+            browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+          }
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.setValue(FRONTEND.order.customer_postcode, VAL.guest.postcode);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.setValue(FRONTEND.order.customer_phone, VAL.guest.phone);
         }
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.setValue(FRONTEND.order.customer_postcode, VAL.guest.postcode);
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.setValue(FRONTEND.order.customer_phone, VAL.guest.phone);
         browser.waitUntil(function () {
           return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
         }, VAL.timeout_out, 'wait for ajax');
