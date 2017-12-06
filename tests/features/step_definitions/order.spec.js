@@ -74,7 +74,12 @@ export default function () {
         browser.waitUntil(function () {
           return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
         }, VAL.timeout_out, 'wait for ajax');
-        browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+        try {
+          browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+        } catch (er) {
+          browser.pause(10000); // avoid magento error
+          browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+        }
         browser.waitUntil(function () {
           return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
         }, VAL.timeout_out, 'wait for ajax');
