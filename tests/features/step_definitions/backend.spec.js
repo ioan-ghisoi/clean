@@ -182,4 +182,14 @@ export default function () {
         break;
     }
   });
+
+  this.Given(/^I update the stock for my test item$/, () => {
+    browser.url(URL.magento_base + URL.test_product_path);
+    browser.waitUntil(function () {
+      return browser.isVisible(BACKEND.test_product_quantity);
+    }, VAL.timeout_out, 'stores button should be visible');
+    browser.setValue(BACKEND.test_product_quantity, 999);
+    browser.selectByValue(BACKEND.test_product_stock, '1');
+    browser.click(BACKEND.test_product_save);
+  });
 }

@@ -13,6 +13,7 @@ export default {
       sign_up_path: '/customer/account/create/',
       orders_path: '/admin/sales/order/',
       invoices_path: '/admin/sales/invoice/',
+      test_product_path: '/admin/catalog/product/edit/id/6/',
     },
     admin: {
       username: 'admin',
@@ -233,6 +234,9 @@ export default {
       admin_security: '#admin_security-head',
       admin_security_key: '#admin_security_use_form_key_inherit',
       security_key_option: '#admin_security_use_form_key',
+      test_product_quantity: 'fieldset.admin__field:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)',
+      test_product_stock: 'div.admin__field:nth-child(8) > div:nth-child(2) > select:nth-child(1)',
+      test_product_save: '#save-button',
     },
   },
 };
