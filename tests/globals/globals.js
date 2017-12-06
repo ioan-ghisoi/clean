@@ -14,6 +14,7 @@ export default {
       orders_path: '/admin/sales/order/',
       invoices_path: '/admin/sales/invoice/',
       test_product_path: '/admin/catalog/product/edit/id/6/',
+      cache_path: '/admin/admin/cache/',
     },
     admin: {
       username: 'admin',
@@ -238,6 +239,7 @@ export default {
       test_product_stock: 'div.admin__field:nth-child(8) > div:nth-child(2) > select:nth-child(1)',
       test_product_save: '#save-button',
       admin_loader: '.admin__form-loading-mask',
+      flash_catch: '#flush_magento',
     },
   },
 };

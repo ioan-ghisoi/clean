@@ -205,4 +205,12 @@ export default function () {
       return !browser.isVisible(BACKEND.admin_loader);
     }, VAL.timeout_out, 'Product should be updated');
   });
+
+  this.Then(/^I clear magento's cache$/, () => {
+    browser.url(URL.magento_base + URL.cache_path);
+    browser.click(BACKEND.flash_catch);
+    browser.waitUntil(function () {
+      return !browser.isVisible(FRONTEND.order.loader);
+    }, VAL.timeout_out, 'Cache should be cleared');
+  });
 }
