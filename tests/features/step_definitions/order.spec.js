@@ -40,26 +40,49 @@ export default function () {
         }, VAL.timeout_out, 'the customer data page should be loaded');
         browser.waitUntil(function () {
           return browser.isVisible(FRONTEND.order.customer_email);
-        }, VAL.timeout_out, 'the customeremail field should be visible');
+        }, VAL.timeout_out, 'the customer email field should be visible');
         browser.setValue(FRONTEND.order.customer_email, VAL.guest.email);
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
-        }, VAL.timeout_out, 'the shipping methods should be updated');
+        }, VAL.timeout_out, 'loader should not be visible');
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.checkout_page_loader);
         }, VAL.timeout_out, 'the customer data page should be loaded');
         browser.waitUntil(function () {
-          return !browser.isVisible(FRONTEND.order.loader);
-        }, VAL.timeout_out, 'the customer data page should be loaded');
+          return !browser.getAttribute(FRONTEND.order.email_fieldset, 'class').includes(VAL.fieldset_block);
+        }, VAL.timeout_out, 'the email check should be completed');
         browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.setValue(FRONTEND.order.customer_lastname, VAL.guest.lastname);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.setValue(FRONTEND.order.customer_street, VAL.guest.address);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.selectByValue(FRONTEND.order.customer_country, VAL.guest.country);
-        browser.pause(2000); // Avoid Magento error
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.setValue(FRONTEND.order.customer_postcode, VAL.guest.postcode);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.setValue(FRONTEND.order.customer_phone, VAL.guest.phone);
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
         }, VAL.timeout_out, 'the shipping methods should be updated');
@@ -69,6 +92,9 @@ export default function () {
         browser.waitUntil(function () {
           return browser.isVisible(FRONTEND.order.shipping_method);
         }, VAL.timeout_out, 'the shipping methods should be ticked');
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'wait for ajax');
         browser.click(FRONTEND.order.go_to_payment);
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);

@@ -89,6 +89,7 @@ export default {
     new_order_status: 'complete',
     theme_color: '#eaeaea',
     button_label: 'johnny',
+    fieldset_block: 'fieldset_block-content-loading',
   },
   selector: {
     frontend: {
@@ -102,6 +103,7 @@ export default {
         go_to_payment: '.button',
         checkout_page_loader: '#checkout-loader',
         customer_email: '#customer-email',
+        email_fieldset: '#customer-email-fieldset',
         customer_firstname: '#shipping-new-address-form > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)',
         customer_lastname: 'div._required:nth-child(2) > div:nth-child(2) > input:nth-child(1)',
         customer_street: 'fieldset.field > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)',
