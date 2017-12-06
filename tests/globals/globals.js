@@ -237,6 +237,7 @@ export default {
       test_product_quantity: 'fieldset.admin__field:nth-child(7) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)',
       test_product_stock: 'div.admin__field:nth-child(8) > div:nth-child(2) > select:nth-child(1)',
       test_product_save: '#save-button',
+      admin_loader: '.admin__form-loading-mask',
     },
   },
 };
