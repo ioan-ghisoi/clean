@@ -16,6 +16,9 @@ export default function () {
         browser.waitUntil(function () {
           return !browser.isVisible(FRONTEND.order.loader);
         }, VAL.timeout_out, 'the product page to be loaded');
+        browser.waitUntil(function () {
+          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+        }, VAL.timeout_out, 'the product should be loaded');
         browser.click(FRONTEND.order.add_product);
         browser.waitUntil(function () {
           return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
