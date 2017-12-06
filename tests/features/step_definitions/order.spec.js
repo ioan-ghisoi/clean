@@ -54,8 +54,32 @@ export default function () {
         browser.waitUntil(function () {
           return !browser.getAttribute(FRONTEND.order.email_fieldset, 'class').includes(VAL.fieldset_block);
         }, VAL.timeout_out, 'the email check should be completed');
-
-        if (!browser.getValue(FRONTEND.order.customer_firstname) === VAL.guest.name && !browser.getValue(FRONTEND.order.customer_phone) === VAL.guest.phone) {
+        console.log(browser.getValue(FRONTEND.order.customer_email) === VAL.guest.email);
+        console.log(browser.getValue(FRONTEND.order.customer_phone) === VAL.guest.phone);
+        if (browser.getValue(FRONTEND.order.customer_firstname) === VAL.guest.name && browser.getValue(FRONTEND.order.customer_phone) === VAL.guest.phone) {
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.loader);
+          }, VAL.timeout_out, 'the shipping methods should be updated');
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.checkout_page_loader);
+          }, VAL.timeout_out, 'the shipping methods should be updated');
+          browser.waitUntil(function () {
+            return browser.isVisible(FRONTEND.order.shipping_method);
+          }, VAL.timeout_out, 'the shipping methods should be ticked');
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.click(FRONTEND.order.go_to_payment);
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.loader);
+          }, VAL.timeout_out, 'the loader before the payment options should not be visible');
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.checkout_page_loader);
+          }, VAL.timeout_out, 'the payment page should be loaded');
+        } else {
           browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
           browser.waitUntil(function () {
             return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
@@ -90,29 +114,29 @@ export default function () {
             return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
           }, VAL.timeout_out, 'wait for ajax');
           browser.setValue(FRONTEND.order.customer_phone, VAL.guest.phone);
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.loader);
+          }, VAL.timeout_out, 'the shipping methods should be updated');
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.checkout_page_loader);
+          }, VAL.timeout_out, 'the shipping methods should be updated');
+          browser.waitUntil(function () {
+            return browser.isVisible(FRONTEND.order.shipping_method);
+          }, VAL.timeout_out, 'the shipping methods should be ticked');
+          browser.waitUntil(function () {
+            return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
+          }, VAL.timeout_out, 'wait for ajax');
+          browser.click(FRONTEND.order.go_to_payment);
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.loader);
+          }, VAL.timeout_out, 'the loader before the payment options should not be visible');
+          browser.waitUntil(function () {
+            return !browser.isVisible(FRONTEND.order.checkout_page_loader);
+          }, VAL.timeout_out, 'the payment page should be loaded');
         }
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.waitUntil(function () {
-          return !browser.isVisible(FRONTEND.order.loader);
-        }, VAL.timeout_out, 'the shipping methods should be updated');
-        browser.waitUntil(function () {
-          return !browser.isVisible(FRONTEND.order.checkout_page_loader);
-        }, VAL.timeout_out, 'the shipping methods should be updated');
-        browser.waitUntil(function () {
-          return browser.isVisible(FRONTEND.order.shipping_method);
-        }, VAL.timeout_out, 'the shipping methods should be ticked');
-        browser.waitUntil(function () {
-          return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
-        }, VAL.timeout_out, 'wait for ajax');
-        browser.click(FRONTEND.order.go_to_payment);
-        browser.waitUntil(function () {
-          return !browser.isVisible(FRONTEND.order.loader);
-        }, VAL.timeout_out, 'the loader before the payment options should not be visible');
-        browser.waitUntil(function () {
-          return !browser.isVisible(FRONTEND.order.checkout_page_loader);
-        }, VAL.timeout_out, 'the payment page should be loaded');
         break;
       case 'registered':
         browser.url(URL.magento_base + URL.product_path);
