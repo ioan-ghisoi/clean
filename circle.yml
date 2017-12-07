@@ -19,7 +19,7 @@ dependencies:
     - cd ~/clean/tests && npm install
   post:
     - sudo rm /etc/apache2/mods-enabled/php5.load && sudo rm /etc/apache2/mods-enabled/php5.conf
-    - sudo cp ~/checkout-magento2-plugin/tests/config/000-default.conf /etc/apache2/sites-available
+    - sudo cp ~/clean/tests/config/000-default.conf /etc/apache2/sites-available
     - sudo service apache2 restart
     - sudo apt-get purge php5-common
     - sudo apt-get update
