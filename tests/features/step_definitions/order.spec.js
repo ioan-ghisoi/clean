@@ -79,6 +79,12 @@ export default function () {
             return !browser.isVisible(FRONTEND.order.checkout_page_loader);
           }, VAL.timeout_out, 'the payment page should be loaded');
         } else {
+          try {
+            browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
+          } catch (er) {
+            browser.pause(10000); // avoid magetno errors
+            browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
+          }
           browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
           browser.waitUntil(function () {
             return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
