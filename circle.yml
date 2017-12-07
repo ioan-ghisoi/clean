@@ -54,3 +54,4 @@ dependencies:
 test:
   override:
     - npm test --prefix tests/
+
