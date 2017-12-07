@@ -53,5 +53,5 @@ dependencies:
 
 test:
   override:
-    - npm test --prefix tests/
+    - cd tests && node --max-old-space-size=2000 ./node_modules/.bin/chimp ./config/chimp.js
 
