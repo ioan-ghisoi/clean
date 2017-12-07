@@ -92,7 +92,6 @@ export default function () {
           browser.waitUntil(function () {
             return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
           }, VAL.timeout_out, 'wait for ajax');
-          browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
           browser.waitUntil(function () {
             return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
           }, VAL.timeout_out, 'wait for ajax');
