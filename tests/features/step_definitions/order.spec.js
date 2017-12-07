@@ -111,7 +111,9 @@ export default function () {
             browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
           } catch (er) {
             browser.pause(10000); // avoid magento error
-            browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+            if (!(browser.getValue(FRONTEND.order.customer_city === VAL.guest.city))) {
+              browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
+            }
           }
           browser.waitUntil(function () {
             return !browser.getAttribute('body', 'class').includes(FRONTEND.order.ajax_loader);
