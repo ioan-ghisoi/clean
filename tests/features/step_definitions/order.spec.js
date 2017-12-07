@@ -88,7 +88,7 @@ export default function () {
             browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
           } catch (er) {
             browser.pause(10000); // avoid magetno errors
-            if (!(browser.getValue(FRONTEND.order.customer_firstname === VAL.guest.name))) {
+            if (!(browser.getValue(FRONTEND.order.customer_firstname) === VAL.guest.name)) {
               browser.setValue(FRONTEND.order.customer_firstname, VAL.guest.name);
             }
           }
@@ -116,7 +116,7 @@ export default function () {
             browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
           } catch (er) {
             browser.pause(10000); // avoid magento error
-            if (!(browser.getValue(FRONTEND.order.customer_city === VAL.guest.city))) {
+            if (!(browser.getValue(FRONTEND.order.customer_city) === VAL.guest.city)) {
               browser.setValue(FRONTEND.order.customer_city, VAL.guest.city);
             }
           }
